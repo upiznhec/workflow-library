@@ -1522,7 +1522,7 @@ Triggered at: 10:00 EST</pre>
                     <dt>Instagram</dt><dd>Instagram API, through a Meta app you create yourself. Free. It needs an Instagram professional account (business or creator) linked to a Facebook Page you manage, and it only reads that account's posts. Commenters' usernames are included.</dd>
                     <dt>Facebook</dt><dd>Facebook Pages API, through the same Meta app. Free. It only reads posts on Pages you manage, not personal profiles. While your Meta app is in development mode, other people's comments come without their names.</dd>
                     <dt>TikTok</dt><dd>TikTok's official connector for AI apps. Free, and it works with personal accounts: you sign in with TikTok, and the permission lasts a year. It only reads your own videos. On a video with more than 500 comments, the rest come sorted by likes and some may repeat.</dd>
-                    <dt>X</dt><dd>X API, paid from credit you buy at console.x.com: about US$0.005 for each post or reply it reads, plus US$0.010 for each different person. There are no automatic top-ups. It can only search the last 7 days, so older posts can't be read.</dd>
+                    <dt>X</dt><dd>X API, paid from credit you buy at console.x.com: about US$0.005 for each post or reply it reads, plus US$0.010 for each different person. There are no automatic top-ups. Posts of any age can be read. For posts older than 7 days it uses X's full-archive search, which is included when you pay per use.</dd>
                     <dt>Reddit</dt><dd>This workflow reads Reddit through ScrapeCreators only.</dd>
                     <dt>ScrapeCreators</dt><dd>A paid service that reads public posts on many platforms. Each request that returns data costs 1 credit (a page of about 10 to 20 comments), and failed requests are free. New accounts get 100 credits with no card, and credits don't expire; for example, 25,000 credits cost US$47. By their own figure, Instagram reads succeed about 9 times in 10. On Instagram, TikTok and Facebook, replies are counted but not read.</dd>
                   </dl>
@@ -1549,8 +1549,8 @@ Triggered at: 10:00 EST</pre>
                         <td class="col-own"><span class="cb-chip off">Official connector</span><span class="cb-chip sc">ScrapeCreators</span></td>
                         <td class="col-others"><span class="cb-chip sc">ScrapeCreators</span></td></tr>
                       <tr data-pf="x"><td class="pf">X</td>
-                        <td class="col-own"><span class="cb-chip off">Official API<small>paid, last 7 days</small></span></td>
-                        <td class="col-others"><span class="cb-chip off">Official API<small>paid, last 7 days</small></span></td></tr>
+                        <td class="col-own"><span class="cb-chip off">Official API<small>paid</small></span></td>
+                        <td class="col-others"><span class="cb-chip off">Official API<small>paid</small></span></td></tr>
                       <tr data-pf="reddit"><td class="pf">Reddit</td>
                         <td class="col-own"><span class="cb-chip sc">ScrapeCreators</span></td>
                         <td class="col-others"><span class="cb-chip sc">ScrapeCreators</span></td></tr>
@@ -1646,6 +1646,19 @@ Triggered at: 10:00 EST</pre>
                 <div class="later-item"><b>Find people to reply to</b><div class="later-row"><pre id="cb-ask-3">List who asked where to buy, so I can reply to them.</pre><button type="button" class="btn btn-line btn-sm" data-copy="cb-ask-3">Copy</button></div></div>
                 <div class="later-item"><b>Pick up new comments</b><div class="later-row"><pre id="cb-ask-4">Read the same posts again to pick up new comments.</pre><button type="button" class="btn btn-line btn-sm" data-copy="cb-ask-4">Copy</button></div></div>
               </div>
+              <details class="fold">
+                <summary>Change it later: requests to send your agent<svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+                <div class="fold-body later">
+                  <div class="later-item"><b>Switch how your own posts are read</b><div class="later-row"><pre id="cb-later-1">From now on, read my own [Instagram / Facebook / TikTok] posts through [ScrapeCreators / the official route] in the comment themes workflow. Tell me what I need to set up, guide me one step at a time, and wait for my OK.</pre><button type="button" class="btn btn-line btn-sm" data-copy="cb-later-1">Copy</button></div></div>
+                  <div class="later-item"><b>Replace a key</b><div class="later-row"><pre id="cb-later-2">My [ScrapeCreators / YouTube / X / Meta] key for the comment themes workflow has changed. Give me the command that saves the new one on my computer, then check that it works.</pre><button type="button" class="btn btn-line btn-sm" data-copy="cb-later-2">Copy</button></div></div>
+                  <div class="later-item"><b>See how much credit is left</b><div class="later-row"><pre id="cb-later-3">Check my comment themes keys. Tell me how many ScrapeCreators credits I have left, and how many posts I have read on X in this billing cycle.</pre><button type="button" class="btn btn-line btn-sm" data-copy="cb-later-3">Copy</button></div></div>
+                  <div class="later-item"><b>Read more of a big post</b><div class="later-row"><pre id="cb-later-4">Not every comment on [post link] was read. Tell me how many more you can read and what that costs, and wait for my OK.</pre><button type="button" class="btn btn-line btn-sm" data-copy="cb-later-4">Copy</button></div></div>
+                  <div class="later-item"><b>Sort every comment of a big post</b><div class="later-row"><pre id="cb-later-5">Sort every comment on [post link] into themes, not only its 1,000 most-liked. Tell me first how many comments that is, and wait for my OK.</pre><button type="button" class="btn btn-line btn-sm" data-copy="cb-later-5">Copy</button></div></div>
+                  <div class="later-item"><b>Combine posts in one report</b><div class="later-row"><pre id="cb-later-6">Put the comments from [my last two requests / all comments posted in the last 30 days] into one report, sorted into themes.</pre><button type="button" class="btn btn-line btn-sm" data-copy="cb-later-6">Copy</button></div></div>
+                  <div class="later-item"><b>Update the workflow</b><div class="later-row"><pre id="cb-later-7">Update the comment themes workflow to the latest version from GitHub. Keep my keys, choices, comments and reports, then run its tests.</pre><button type="button" class="btn btn-line btn-sm" data-copy="cb-later-7">Copy</button></div></div>
+                  <div class="later-item"><b>Remove the workflow</b><div class="later-row"><pre id="cb-later-8">Remove the comment themes workflow from this folder. Show me what you would delete and wait for my OK. Then tell me where to remove each key and connection.</pre><button type="button" class="btn btn-line btn-sm" data-copy="cb-later-8">Copy</button></div></div>
+                </div>
+              </details>
             </div>
             <aside class="lane-side">
               <div class="ph">[An answer from the tests, with its counts and comment IDs, added after testing]</div>
@@ -1803,7 +1816,7 @@ Triggered at: 10:00 EST</pre>
     found.notPost.forEach(function (it) { notes.appendChild(item('li', 'warn', 'This looks like a link to a ' + NAMES[it.platform] + ' profile, not to a single post: ' + it.text + '. Please paste the link of each post.')); });
     found.unknown.forEach(function (t) { notes.appendChild(item('li', 'warn', 'This isn\'t a YouTube, Instagram, Facebook, TikTok, X or Reddit link: ' + t)); });
     if (found.twice) notes.appendChild(item('li', 'info', 'You pasted ' + (found.twice === 1 ? 'a link' : found.twice + ' links') + ' twice. Each post will only be read once.'));
-    if (counts.x) notes.appendChild(item('li', 'info', 'X only lets us read posts from the last 7 days, and it charges for each reply read, from credit you buy on X.'));
+    if (counts.x) notes.appendChild(item('li', 'info', 'X charges up to about 1.5 US cents for each reply it reads, from credit you buy on X.'));
 
     var need = state.mode === 'own' ? CHOICE.filter(function (pf) { return counts[pf]; }) : [];
     $('cb-route-part').hidden = need.length === 0;
