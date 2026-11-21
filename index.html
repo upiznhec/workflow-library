@@ -608,10 +608,15 @@ pre, code { font-variant-ligatures: none; }
 .cb-way.off { border-top-color: var(--off-line); }
 .cb-way.sc { border-top-color: var(--sc-line); }
 .cb-way strong { font-size: 1rem; font-weight: 800; }
-.cb-way ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-2); font-size: 14.5px; line-height: 1.55; }
-.cb-way.off li::marker { color: var(--off-ink); }
-.cb-way.sc li::marker { color: var(--sc-ink); }
-.cb-side { padding: 20px 18px 18px; border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 12px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); }
+.cb-facts { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 14px; font-size: 14.5px; line-height: 1.55; }
+.cb-facts dt { padding-top: 2px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.cb-facts dd { margin: 0; color: var(--ink-2); }
+.cb-way.off .cb-facts dt { color: var(--off-ink); }
+.cb-way.sc .cb-facts dt { color: var(--sc-ink); }
+/* The route table follows the reader through step 1 and stops where step 1 ends: the side lane is the sticky grid
+   item, so it can move only within step 1's row. */
+.cb-follow { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); }
+.cb-side { padding: 20px 18px 18px; border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 12px; }
 .cb-side > strong { font-size: 1.02rem; font-weight: 800; letter-spacing: -0.015em; }
 .cb-table-wrap { overflow-x: auto; }
 .cb-table { width: 100%; border-collapse: separate; border-spacing: 0 6px; font-size: 13px; }
@@ -630,7 +635,7 @@ pre, code { font-variant-ligatures: none; }
 .cb-dot.sc { background: var(--sc-bg); border-color: var(--sc-line); }
 .req pre .cb-gap { color: var(--accent); }
 @media (max-width: 900px) {
-  .cb-side { position: static; }
+  .cb-follow { position: static; }
   .cb-pair { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 520px) {
@@ -1474,31 +1479,31 @@ Triggered at: 10:00 EST</pre>
               </div>
               <div class="cb-part" id="cb-route-part" hidden>
                 <span class="cb-label">How should your own posts be read?</span>
-                <p class="cb-hint">If you skip this, the agent asks you the first time.</p>
+                <p class="cb-hint">This choice is only for your own Instagram, Facebook and TikTok posts; other people's posts on these platforms always go through ScrapeCreators. If you skip it, the agent asks you the first time.</p>
                 <div class="cb-box cb-routes" id="cb-routes"></div>
                 <div class="cb-pair">
                   <div class="cb-way off">
                     <strong>Official route</strong>
-                    <ul>
-                      <li>Free.</li>
-                      <li>Reads only your own posts.</li>
-                      <li>More setup: Instagram and Facebook need your own Meta app, and you do every click on Meta's site. TikTok needs the official TikTok connector added to your AI app once.</li>
-                      <li>Facebook reads Pages only. While your Meta app is in development mode, other people's comments come without their names.</li>
-                    </ul>
+                    <dl class="cb-facts">
+                      <dt>Cost</dt><dd>Nothing to pay for reading the comments.</dd>
+                      <dt>Setup</dt><dd>Instagram and Facebook: your own Meta app, and you do every click on Meta's site. TikTok: add the official TikTok connector to your AI app once.</dd>
+                      <dt>Names</dt><dd>Instagram and TikTok: yes. Facebook: other people's comments come without their names while your Meta app is in development mode.</dd>
+                      <dt>Reach</dt><dd>Only the accounts you manage. Facebook: Pages only, not a personal profile.</dd>
+                    </dl>
                   </div>
                   <div class="cb-way sc">
                     <strong>ScrapeCreators</strong>
-                    <ul>
-                      <li>One key from scrapecreators.com covers Instagram, Facebook, TikTok and Reddit.</li>
-                      <li>Paid: 1 credit for each page of about 10 to 20 comments. 100 free credits to start, no card.</li>
-                      <li>Reads any public post, yours or other people's, with commenters' names.</li>
-                      <li>Instagram reads succeed about 9 times in 10 (ScrapeCreators' own figure).</li>
-                    </ul>
+                    <dl class="cb-facts">
+                      <dt>Cost</dt><dd>1 credit for each page of about 10 to 20 comments. 100 free credits to start, no card.</dd>
+                      <dt>Setup</dt><dd>One key from scrapecreators.com.</dd>
+                      <dt>Names</dt><dd>Yes, on all three. Instagram reads succeed about 9 times in 10 (ScrapeCreators' own figure).</dd>
+                      <dt>Reach</dt><dd>Any public post, so the same key also reads other people's posts and Reddit.</dd>
+                    </dl>
                   </div>
                 </div>
               </div>
             </div>
-            <aside class="lane-side">
+            <aside class="lane-side cb-follow">
               <div class="cb-side">
                 <strong>How each post is read</strong>
                 <div class="cb-table-wrap">
