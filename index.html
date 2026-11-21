@@ -564,6 +564,81 @@ pre, code { font-variant-ligatures: none; }
 .gshots { flex: 0 1 300px; max-width: 100%; display: flex; flex-direction: column; gap: 12px; }
 .gshots .gshot { flex: none; }
 
+/* ===== Workflow 1 task page: the request builder (workflow1-view.html). Green marks a platform's own route, blue
+   ScrapeCreators, as in the user's route table. ===== */
+:root {
+  --off-bg: #E4F1E7; --off-ink: #24563A; --off-line: #B9D9C3;
+  --sc-bg: #E5EDF8; --sc-ink: #284A77; --sc-line: #BCCDE6;
+  --warn-bg: #FBF1E4; --warn-ink: #7A4A12; --warn-line: #EED3AE;
+}
+.pill-testing { padding: 4px 12px; border-radius: 999px; background: var(--warn-bg); color: var(--warn-ink); font-size: 12.5px; font-weight: 800; }
+.cb-builder { gap: 24px; }
+.cb-part { display: flex; flex-direction: column; gap: 10px; }
+.cb-label { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.015em; color: var(--ink); }
+.cb-hint { margin: 0; color: var(--ink-3); font-size: 14px; line-height: 1.55; }
+.cb-box { border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow); padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.cb-box-top { display: flex; justify-content: space-between; align-items: center; gap: 8px 12px; flex-wrap: wrap; }
+.cb-box-top label { font-size: 14px; font-weight: 700; color: var(--ink); }
+.cb-example { font-size: 12px; font-weight: 700; color: var(--accent); background: var(--accent-tint); padding: 4px 10px; border-radius: 999px; }
+#cb-links { width: 100%; min-height: 150px; resize: vertical; padding: 14px 16px; border: 1px solid var(--line-2); border-radius: var(--r-sm); background: var(--bg); color: var(--ink); font-family: var(--font-mono); font-size: 13px; line-height: 1.7; }
+#cb-links:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-tint); }
+.cb-clear { border: 0; background: none; padding: 4px 2px; font: inherit; font-size: 13.5px; font-weight: 700; color: var(--accent); cursor: pointer; }
+.cb-clear:hover { text-decoration: underline; }
+.cb-found, .cb-notes, .cb-legend { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.cb-found:empty, .cb-notes:empty { display: none; }
+.cb-found li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 14px; border-radius: var(--r-sm); background: var(--ph); }
+.cb-found .pf { font-weight: 700; }
+.cb-found .count { margin-left: 8px; color: var(--ink-3); font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cb-badge { justify-self: end; padding: 4px 10px; border-radius: 999px; border: 1px solid transparent; font-size: 12.5px; font-weight: 700; white-space: nowrap; }
+.cb-badge.off { background: var(--off-bg); color: var(--off-ink); border-color: var(--off-line); }
+.cb-badge.sc { background: var(--sc-bg); color: var(--sc-ink); border-color: var(--sc-line); }
+.cb-badge.ask { background: var(--surface); color: var(--ink-2); border-color: var(--line-2); }
+.cb-notes li { padding: 10px 14px; border-radius: var(--r-sm); border: 1px solid; font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; }
+.cb-notes li.warn { background: var(--warn-bg); color: var(--warn-ink); border-color: var(--warn-line); }
+.cb-notes li.info { background: var(--note-bg); color: var(--note-ink); border-color: var(--note-line); }
+.cb-routes { gap: 16px; }
+.cb-route-row { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 8px 16px; align-items: center; }
+.cb-route-row > b { font-size: 15px; }
+.cb-route-row .seg button { min-height: 38px; padding: 0 15px; font-size: 13.5px; }
+.cb-route-row .seg button.off[aria-pressed="true"] { background: var(--off-ink); color: var(--on-ink); }
+.cb-route-row .seg button.sc[aria-pressed="true"] { background: var(--sc-ink); color: var(--on-ink); }
+.cb-sub { grid-column: 2; margin: 0; font-size: 13px; line-height: 1.5; color: var(--ink-3); }
+.cb-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.cb-way { padding: 18px 20px; border-radius: var(--r); background: var(--surface); box-shadow: var(--shadow); border-top: 5px solid; display: flex; flex-direction: column; gap: 8px; }
+.cb-way.off { border-top-color: var(--off-line); }
+.cb-way.sc { border-top-color: var(--sc-line); }
+.cb-way strong { font-size: 1rem; font-weight: 800; }
+.cb-way ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; color: var(--ink-2); font-size: 14.5px; line-height: 1.55; }
+.cb-way.off li::marker { color: var(--off-ink); }
+.cb-way.sc li::marker { color: var(--sc-ink); }
+.cb-side { padding: 20px 18px 18px; border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 12px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); }
+.cb-side > strong { font-size: 1.02rem; font-weight: 800; letter-spacing: -0.015em; }
+.cb-table-wrap { overflow-x: auto; }
+.cb-table { width: 100%; border-collapse: separate; border-spacing: 0 6px; font-size: 13px; }
+.cb-table th { padding: 0 6px 2px; text-align: left; font-size: 11.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+.cb-table td { padding: 0 4px; vertical-align: middle; transition: opacity 0.25s var(--ease); }
+.cb-table td.pf { padding-left: 6px; font-size: 13.5px; font-weight: 700; white-space: nowrap; }
+.cb-table td > .cb-chip + .cb-chip { margin-top: 4px; }
+.cb-chip { display: block; padding: 5px 8px; border-radius: 8px; border: 1px solid transparent; font-size: 12px; font-weight: 700; line-height: 1.25; text-align: center; }
+.cb-chip.off { background: var(--off-bg); color: var(--off-ink); border-color: var(--off-line); }
+.cb-chip.sc { background: var(--sc-bg); color: var(--sc-ink); border-color: var(--sc-line); }
+.cb-chip small { display: block; font-size: 11px; font-weight: 600; opacity: 0.85; }
+.cb-table.focus-own td.col-others, .cb-table.focus-others td.col-own, .cb-table tr.dim td { opacity: 0.35; }
+.cb-legend { gap: 6px; font-size: 12.5px; line-height: 1.45; color: var(--ink-2); }
+.cb-dot { display: inline-block; width: 10px; height: 10px; margin-right: 6px; border-radius: 3px; border: 1px solid; vertical-align: -1px; }
+.cb-dot.off { background: var(--off-bg); border-color: var(--off-line); }
+.cb-dot.sc { background: var(--sc-bg); border-color: var(--sc-line); }
+.req pre .cb-gap { color: var(--accent); }
+@media (max-width: 900px) {
+  .cb-side { position: static; }
+  .cb-pair { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 520px) {
+  .cb-route-row { grid-template-columns: minmax(0, 1fr); }
+  .cb-sub { grid-column: 1; }
+  .cb-box { padding: 16px; }
+}
+
 </style>
 </head>
 <body>
@@ -573,6 +648,7 @@ pre, code { font-variant-ligatures: none; }
   <div class="proto-pages">
     <a href="#home" data-page="home">Home</a>
     <a href="#setup" data-page="setup">Get set up</a>
+    <a href="#sort-comments" data-page="task-comments">Comment sorting</a>
     <a href="#trend-topics" data-page="trend-topics">Trend tracking</a>
   </div>
 </nav>
@@ -618,7 +694,7 @@ pre, code { font-variant-ligatures: none; }
       <div class="wf-grid">
         <a class="wf-card" href="#sort-comments">
           <span class="wf-icon" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9 H28 A3 3 0 0 1 31 12 V22 A3 3 0 0 1 28 25 H16 L10 30 V25 H6 A3 3 0 0 1 3 22 V12 A3 3 0 0 1 6 9 Z"></path><path d="M35 16 H38 A3 3 0 0 1 41 19 V28 A3 3 0 0 1 38 31 H36 V35 L31 31 H23 A3 3 0 0 1 20 28 V27"></path><path d="M9 15 H25"></path><path d="M9 19 H19"></path></svg></span>
-          <span class="wf-text"><strong>Sorting comments and messages into themes</strong><span class="wf-desc">Group a batch of comments or messages into themes, with examples for each.</span></span>
+          <span class="wf-text"><strong>Sorting comments into themes</strong><span class="wf-desc">Paste the links of posts and get their comments grouped into themes, with counts and exact quotes.</span></span>
         </a>
         <a class="wf-card" href="#trend-topics">
           <span class="wf-icon" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 38 H40"></path><path d="M6 38 V6"></path><path d="M11 31 L19 22 L25 27 L37 13"></path><path d="M30 13 H37 V20"></path></svg></span>
@@ -1303,6 +1379,459 @@ Triggered at: 10:00 EST</pre>
 </div>
 
 <!-- ============ WORKFLOWS WITHOUT A PAGE YET ============ -->
+<div class="view" data-view="task-comments" hidden>
+  <header class="site-head gut">
+    <div class="site-head-in">
+      <a class="brand" href="#home">Social Media AI Workflow Library</a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="#workflows">Workflows</a>
+        <a href="#setup">Get set up</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="t-main gut">
+    <div class="t-head">
+      <a class="back" href="#workflows">← All workflows</a>
+      <h1 id="cb-title" tabindex="-1">Sorting comments into themes</h1>
+      <div class="meta">
+        <span class="pill-testing">Being tested</span>
+        <span class="tbd">[Tested with Codex, Claude Code and DeepSeek Harness: dates and versions added after testing]</span>
+      </div>
+      <div class="credit">
+        <strong>Source and terms of use</strong>
+        <span>Based on <a href="https://github.com/ScrapeCreators/social-media-research-skills" target="_blank" rel="noopener noreferrer">comment-mining</a> v1.0.0 by ScrapeCreators (MIT License). This version keeps its kinds of comments, its themes and its report format. Scripts count the comments and check every quote, and your own posts can be read through each platform's official route as well as through ScrapeCreators. Not affiliated with or endorsed by ScrapeCreators.</span>
+        <span>The scripts are open source: <a href="https://github.com/upiznhec/comment-themes" target="_blank" rel="noopener noreferrer">comment-themes</a> (MIT License).</span>
+      </div>
+    </div>
+
+    <section class="sec" aria-labelledby="cb-over">
+      <div class="sec-head"><p class="eyebrow">Overview</p><h2 id="cb-over">What this workflow does</h2></div>
+      <div class="lane">
+        <div class="lane-main">
+          <p class="lead">You paste the links of posts, your own or other people's. Your agent reads every comment on them, sorts the comments into themes such as questions, complaints, praise and buying intent, and writes a short report with how many people said each thing, in their own words. The comments stay on your computer, so you can ask your own questions about them later.</p>
+          <div class="need">
+            <strong>Before you start</strong>
+            <ul>
+              <li>An AI agent that can run commands with internet access and edit files (<a href="#setup">Get set up</a>).</li>
+              <li>Node.js 20 or later on your computer. Your agent can check this and install it for you.</li>
+              <li>A key or connection for some posts. You do not need it now: the agent asks the first time a post needs it (step 3).</li>
+            </ul>
+            <p>The scripts are free. Reading comments is free on YouTube, and on your own Instagram, Facebook Page and TikTok posts through their official routes. ScrapeCreators, which reads other people's posts and Reddit, costs 1 credit for each page of about 10 to 20 comments, with 100 free credits to start. X uses paid credit you buy from X. You also pay for your agent's use.</p>
+            <div class="need-meta"><span class="tbd">Setup time: [measured in testing]</span><span class="tbd">Cost of one analysis: [measured in testing]</span></div>
+          </div>
+          <div class="out-row">
+            <span class="pill">Output: themes for you to review, not replies to post</span>
+            <a href="#setup">First time using an agent? Set one up first →</a>
+          </div>
+        </div>
+        <aside class="lane-side" aria-label="In short">
+          <div class="trio-item"><strong>You give the agent</strong><span>Links to posts on YouTube, Instagram, Facebook, TikTok, X or Reddit, and whether they are yours</span></div>
+          <div class="trio-item"><strong>You get back</strong><span>A report of the themes in the comments, with counts, likes and exact quotes, and a table of every comment with its theme</span></div>
+          <div class="trio-item"><strong>You still check</strong><span>Whether the themes match what you know about your audience, and each quote before you use it. The comments on a few posts do not speak for a whole market.</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="cb-video">
+      <div class="sec-head"><p class="eyebrow">Video</p><h2 id="cb-video">Watch it done</h2></div>
+      <button type="button" class="video" data-toast="The walkthrough video is recorded during testing.">
+        <svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><circle cx="32" cy="32" r="29"></circle><path d="M26 21 L44 32 L26 43 Z"></path></svg>
+        <span>[Full walkthrough video · recorded during testing]</span>
+      </button>
+      <p class="chapters">Chapters: [Build the request] · [Set up a key] · [Read the report] · [Ask your own questions]</p>
+    </section>
+
+    <section class="sec" aria-labelledby="cb-steps">
+      <div class="sec-head"><p class="eyebrow">Steps</p><h2 id="cb-steps">Steps</h2></div>
+      <ol class="steps">
+
+        <li class="step">
+          <div class="step-head"><span class="num" aria-hidden="true">1</span><h3>Choose your posts</h3></div>
+          <div class="step-body lane">
+            <div class="lane-main cb-builder">
+              <p>Say whose posts they are and paste their links. You can paste as many as you like, from different platforms.</p>
+              <div class="cb-part">
+                <span class="cb-label" id="cb-mode-label">Whose posts are these?</span>
+                <div class="seg" role="group" aria-labelledby="cb-mode-label">
+                  <button type="button" data-cb-mode="own" aria-pressed="true">My own posts</button>
+                  <button type="button" data-cb-mode="others" aria-pressed="false">Other people's posts</button>
+                </div>
+                <p class="cb-hint">If you have both, make one request for each.</p>
+              </div>
+              <div class="cb-box">
+                <div class="cb-box-top">
+                  <label for="cb-links">Post links, one per line: YouTube, Instagram, Facebook, TikTok, X or Reddit</label>
+                  <span class="cb-example" id="cb-example">Example links: replace them with yours</span>
+                </div>
+                <textarea id="cb-links" spellcheck="false" autocomplete="off"></textarea>
+                <div class="cb-box-top">
+                  <span class="cb-hint" id="cb-total"></span>
+                  <button type="button" class="cb-clear" id="cb-clear">Clear</button>
+                </div>
+                <ul class="cb-found" id="cb-found"></ul>
+                <ul class="cb-notes" id="cb-notes"></ul>
+              </div>
+              <div class="cb-part" id="cb-route-part" hidden>
+                <span class="cb-label">How should your own posts be read?</span>
+                <p class="cb-hint">If you skip this, the agent asks you the first time.</p>
+                <div class="cb-box cb-routes" id="cb-routes"></div>
+                <div class="cb-pair">
+                  <div class="cb-way off">
+                    <strong>Official route</strong>
+                    <ul>
+                      <li>Free.</li>
+                      <li>Reads only your own posts.</li>
+                      <li>More setup: Instagram and Facebook need your own Meta app, and you do every click on Meta's site. TikTok needs the official TikTok connector added to your AI app once.</li>
+                      <li>Facebook reads Pages only. While your Meta app is in development mode, other people's comments come without their names.</li>
+                    </ul>
+                  </div>
+                  <div class="cb-way sc">
+                    <strong>ScrapeCreators</strong>
+                    <ul>
+                      <li>One key from scrapecreators.com covers Instagram, Facebook, TikTok and Reddit.</li>
+                      <li>Paid: 1 credit for each page of about 10 to 20 comments. 100 free credits to start, no card.</li>
+                      <li>Reads any public post, yours or other people's, with commenters' names.</li>
+                      <li>Instagram reads succeed about 9 times in 10 (ScrapeCreators' own figure).</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <aside class="lane-side">
+              <div class="cb-side">
+                <strong>How each post is read</strong>
+                <div class="cb-table-wrap">
+                  <table class="cb-table focus-own" id="cb-table">
+                    <thead><tr><th scope="col">Platform</th><th scope="col">Your posts</th><th scope="col">Other people's</th></tr></thead>
+                    <tbody>
+                      <tr data-pf="youtube"><td class="pf">YouTube</td>
+                        <td class="col-own"><span class="cb-chip off">Official API<small>free</small></span></td>
+                        <td class="col-others"><span class="cb-chip off">Official API<small>free</small></span></td></tr>
+                      <tr data-pf="instagram"><td class="pf">Instagram</td>
+                        <td class="col-own"><span class="cb-chip off">Official API</span><span class="cb-chip sc">ScrapeCreators</span></td>
+                        <td class="col-others"><span class="cb-chip sc">ScrapeCreators</span></td></tr>
+                      <tr data-pf="facebook"><td class="pf">Facebook</td>
+                        <td class="col-own"><span class="cb-chip off">Official API<small>Pages only</small></span><span class="cb-chip sc">ScrapeCreators</span></td>
+                        <td class="col-others"><span class="cb-chip sc">ScrapeCreators</span></td></tr>
+                      <tr data-pf="tiktok"><td class="pf">TikTok</td>
+                        <td class="col-own"><span class="cb-chip off">Official connector</span><span class="cb-chip sc">ScrapeCreators</span></td>
+                        <td class="col-others"><span class="cb-chip sc">ScrapeCreators</span></td></tr>
+                      <tr data-pf="x"><td class="pf">X</td>
+                        <td class="col-own"><span class="cb-chip off">Official API<small>paid, last 7 days</small></span></td>
+                        <td class="col-others"><span class="cb-chip off">Official API<small>paid, last 7 days</small></span></td></tr>
+                      <tr data-pf="reddit"><td class="pf">Reddit</td>
+                        <td class="col-own"><span class="cb-chip sc">ScrapeCreators</span></td>
+                        <td class="col-others"><span class="cb-chip sc">ScrapeCreators</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <ul class="cb-legend">
+                  <li><span class="cb-dot off"></span>The platform's own route: free, except X</li>
+                  <li><span class="cb-dot sc"></span>ScrapeCreators: paid credits, any public post</li>
+                  <li>Faded rows and columns are not in your request.</li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-head"><span class="num" aria-hidden="true">2</span><h3>Send the request to your agent</h3></div>
+          <div class="step-body lane">
+            <div class="lane-main">
+              <p>Copy the request and paste it into your agent. The first time, open an empty folder in your agent: the request sets the workflow up there first. Later, send new requests in the same folder.</p>
+              <div class="req">
+                <div class="req-head"><span>Request</span><button type="button" class="btn btn-line btn-sm" data-copy="cb-request">Copy request</button></div>
+                <pre id="cb-request"></pre>
+              </div>
+            </div>
+            <aside class="lane-side">
+              <div class="card callout">
+                <strong class="callout-title"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M2 6V14H14V6Z" opacity="0.3"/><path d="M5 3V6H11V3H5Z"/></svg>What the request asks</strong>
+                <span>The first line sets the workflow up if this folder does not have it yet, so the same request works the first time and every time after.</span>
+                <span>The last lines ask your agent to go one step at a time, never to ask for a key or password in the chat, and to tell you any cost before spending it.</span>
+              </div>
+            </aside>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-head"><span class="num" aria-hidden="true">3</span><h3>Answer what your agent asks</h3></div>
+          <div class="step-body lane">
+            <div class="lane-main">
+              <p>Your agent asks only for what this request still needs, one thing at a time.</p>
+              <div class="card">
+                <strong>The first time a post needs it</strong>
+                <ul>
+                  <li>A key or connection for that platform, with the steps to make it: ScrapeCreators (a key from scrapecreators.com), YouTube (a key from Google Cloud), X (a token from the X Developer Console), Instagram and Facebook's official route (your own Meta app), or the TikTok connector (added to your AI app).</li>
+                  <li>The agent gives you a command that saves the key on your computer. You never paste it into the chat.</li>
+                  <li>If you did not say how to read your own Instagram, Facebook or TikTok posts, it asks once and remembers your answer.</li>
+                </ul>
+              </div>
+              <div class="card">
+                <strong>Every time</strong>
+                <ul>
+                  <li>Before reading anything that costs money, it lists the posts with their number of comments and what reading them costs, and waits for your OK.</li>
+                  <li>If a link to your Facebook Page cannot be matched, it lists the Page's latest posts and asks which one you meant.</li>
+                </ul>
+              </div>
+            </div>
+            <aside class="lane-side">
+              <div class="card callout">
+                <strong class="callout-title"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M2 6V14H14V6Z" opacity="0.3"/><path d="M5 3V6H11V3H5Z"/></svg>On Meta's sites</strong>
+                <span>On Facebook, Instagram and Meta for Developers, you do every click yourself. Meta may log you out, ask for ID or limit an account when a program clicks there. If that happens, stop and tell your agent.</span>
+              </div>
+              <div class="ph">[Screenshots of a key being made and saved, added after testing]</div>
+            </aside>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-head"><span class="num" aria-hidden="true">4</span><h3>Read the report</h3></div>
+          <div class="step-body lane">
+            <div class="lane-main">
+              <p>When the comments are read, your agent sorts them and writes the report: the main themes with how many comments and how many different people mention each, the questions people ask, their objections, what makes them want to buy, words worth reusing and content ideas. It also saves a table of every comment with its theme, to check or filter yourself.</p>
+              <div class="ph">[A real report from the tests, added after testing]</div>
+            </div>
+            <aside class="lane-side">
+              <div class="card callout">
+                <strong class="callout-title"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M2 6V14H14V6Z" opacity="0.3"/><path d="M5 3V6H11V3H5Z"/></svg>How the numbers are checked</strong>
+                <span>The agent labels each comment. Scripts count the labels and check that every quote in the report is a real comment.</span>
+                <span>When there are more than 1,000 comments, the report covers the 1,000 most-liked and says so.</span>
+              </div>
+            </aside>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-head"><span class="num" aria-hidden="true">5</span><h3>Ask your own questions</h3></div>
+          <div class="step-body lane">
+            <div class="lane-main">
+              <p>The comments stay on your computer, so you can ask about them at any time. Your agent answers with counts from a script and the comments it found, not with guesses. To include new comments, ask it to read the same posts again.</p>
+              <div class="later">
+                <div class="later-item"><b>Count a topic</b><div class="later-row"><pre id="cb-ask-1">How many people asked about the price?</pre><button type="button" class="btn btn-line btn-sm" data-copy="cb-ask-1">Copy</button></div></div>
+                <div class="later-item"><b>See every comment on a theme</b><div class="later-row"><pre id="cb-ask-2">Show me every complaint about shipping, with the comment IDs.</pre><button type="button" class="btn btn-line btn-sm" data-copy="cb-ask-2">Copy</button></div></div>
+                <div class="later-item"><b>Find people to answer</b><div class="later-row"><pre id="cb-ask-3">List who asked where to buy, so I can reply to them.</pre><button type="button" class="btn btn-line btn-sm" data-copy="cb-ask-3">Copy</button></div></div>
+                <div class="later-item"><b>Read the posts again</b><div class="later-row"><pre id="cb-ask-4">Read the same posts again for new comments, then tell me what changed.</pre><button type="button" class="btn btn-line btn-sm" data-copy="cb-ask-4">Copy</button></div></div>
+              </div>
+            </div>
+            <aside class="lane-side">
+              <div class="ph">[An answer from the tests, with its counts and comment IDs, added after testing]</div>
+            </aside>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="sec" aria-labelledby="cb-wrong">
+      <div class="sec-head"><p class="eyebrow">Troubleshooting</p><h2 id="cb-wrong">If it goes wrong</h2></div>
+      <div class="ph">[The problems testers meet, with what they see and the fix that worked, added after testing]</div>
+      <div class="checks">
+        <strong>How experienced users check</strong>
+        <ul>
+          <li>Run the same prompt in a second agent and compare the results.</li>
+          <li>Work out whether the problem is the prompt or the service.</li>
+          <li>Fix it one step at a time with follow-up instructions.</li>
+          <li>Ask the agent where each fact came from, then check the source.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="cb-rate" data-rating>
+      <div class="sec-head"><p class="eyebrow">Feedback</p><h2 id="cb-rate">Rate this page and this workflow</h2></div>
+      <div class="rate-rows">
+        <div class="rate-row">
+          <span id="cb-rate-page-label">How clear was this page?</span>
+          <div class="stars" role="radiogroup" aria-labelledby="cb-rate-page-label">
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="1 star"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="2 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="3 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="4 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="5 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+      </div>
+        </div>
+        <div class="rate-row">
+          <span id="cb-rate-flow-label">Did this workflow work for you?</span>
+          <div class="stars" role="radiogroup" aria-labelledby="cb-rate-flow-label">
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="1 star"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="2 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="3 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="4 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="5 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+      </div>
+        </div>
+      </div>
+      <div class="rate-send">
+        <button type="button" class="btn btn-dark" data-send>Send ratings</button>
+        <p class="form-msg" role="status"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot gut">
+    <div class="site-foot-in">
+      <div class="site-foot-row">
+        <a href="#workflows">← Back to all workflows</a>
+        <span>USC Annenberg · DSM 596 capstone</span>
+      </div>
+      <p>This workflow is based on <a href="https://github.com/ScrapeCreators/social-media-research-skills" target="_blank" rel="noopener noreferrer">comment-mining</a> v1.0.0 by ScrapeCreators (MIT License). It is not affiliated with or endorsed by ScrapeCreators. YouTube, Instagram, Facebook, TikTok, X and Reddit are trademarks of their owners.</p>
+    </div>
+  </footer>
+
+<script>
+/* Workflow 1 request builder: whose posts, one box of links, the route for one's own Instagram, Facebook and
+   TikTok posts, and the request it makes. Nothing leaves the page. */
+(function () {
+  'use strict';
+  var REPO = 'https://github.com/upiznhec/comment-themes';
+  var EXAMPLE = ['https://www.instagram.com/p/EXAMPLE123/', 'https://www.instagram.com/reel/EXAMPLE456/',
+    'https://www.tiktok.com/@yourbrand/video/7400000000000000000', 'https://www.youtube.com/watch?v=EXAMPLEVID1'].join('\n');
+  var NAMES = { youtube: 'YouTube', instagram: 'Instagram', facebook: 'Facebook', tiktok: 'TikTok', x: 'X', reddit: 'Reddit' };
+  var ORDER = ['youtube', 'instagram', 'facebook', 'tiktok', 'x', 'reddit'];
+  var CHOICE = ['instagram', 'facebook', 'tiktok'];
+  var OFFICIAL = { instagram: 'the official route', facebook: 'the official route (my Facebook Page)', tiktok: 'the official TikTok connector' };
+  var state = { mode: 'own', routes: { instagram: null, facebook: null, tiktok: null }, example: true };
+  var $ = function (id) { return document.getElementById(id); };
+  var links = $('cb-links');
+  if (!links) return;
+
+  // The platform of a link, and whether it points to one post rather than a profile or a page.
+  function classify(raw) {
+    var text = raw.trim().replace(/[),.;]+$/, '');
+    var url;
+    try { url = new URL(/^https?:\/\//i.test(text) ? text : 'https://' + text); } catch (e) { return { text: text, platform: null }; }
+    var host = url.hostname.toLowerCase().replace(/^(www|m|mobile)\./, '');
+    var path = url.pathname, platform = null, post = false;
+    if (/(^|\.)youtube\.com$|^youtu\.be$/.test(host)) {
+      platform = 'youtube'; post = host === 'youtu.be' ? path.length > 1 : (url.searchParams.has('v') || /^\/(shorts|live)\/[^/]+/.test(path));
+    } else if (/(^|\.)instagram\.com$/.test(host)) {
+      platform = 'instagram'; post = /\/(p|reel|reels|tv)\/[\w-]+/.test(path);
+    } else if (/(^|\.)facebook\.com$|^fb\.watch$/.test(host)) {
+      platform = 'facebook'; post = host === 'fb.watch' || /\/(posts|videos|reel|permalink|photos|share)\b/.test(path) || /story_fbid|fbid=/.test(url.search) || /permalink\.php/.test(path);
+    } else if (/(^|\.)tiktok\.com$/.test(host)) {
+      platform = 'tiktok'; post = /\/video\/\d+/.test(path) || /^(vm|vt)\.tiktok\.com$/.test(host) || /^\/t\/\w+/.test(path);
+    } else if (/(^|\.)(x|twitter)\.com$/.test(host)) {
+      platform = 'x'; post = /\/status(es)?\/\d+/.test(path);
+    } else if (/(^|\.)reddit\.com$|^redd\.it$/.test(host)) {
+      platform = 'reddit'; post = host === 'redd.it' || /\/comments\/\w+/.test(path) || /\/s\/\w+/.test(path);
+    }
+    return { text: text, platform: platform, post: post };
+  }
+
+  function read() {
+    var seen = {}, out = { posts: [], unknown: [], notPost: [], twice: 0 };
+    links.value.split(/[\s,]+/).filter(Boolean).forEach(function (part) {
+      var item = classify(part);
+      if (!item.platform) out.unknown.push(item.text);
+      else if (!item.post) out.notPost.push(item);
+      else if (seen[item.text]) out.twice += 1;
+      else { seen[item.text] = true; out.posts.push(item); }
+    });
+    return out;
+  }
+
+  function routeOf(pf) {
+    if (pf === 'youtube') return ['off', 'Official API · free'];
+    if (pf === 'x') return ['off', 'Official API · paid'];
+    if (pf === 'reddit' || state.mode === 'others') return ['sc', 'ScrapeCreators'];
+    if (state.routes[pf] === 'official') return ['off', pf === 'tiktok' ? 'Official connector' : 'Official API'];
+    if (state.routes[pf] === 'scrapecreators') return ['sc', 'ScrapeCreators'];
+    return ['ask', 'Choose below'];
+  }
+
+  function item(tag, cls, text) {
+    var node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function render() {
+    var found = read(), counts = {};
+    found.posts.forEach(function (p) { counts[p.platform] = (counts[p.platform] || 0) + 1; });
+    var present = ORDER.filter(function (pf) { return counts[pf]; });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-cb-mode]'), function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-cb-mode') === state.mode));
+    });
+
+    var list = $('cb-found');
+    list.textContent = '';
+    present.forEach(function (pf) {
+      var r = routeOf(pf), row = item('li'), name = item('span');
+      name.appendChild(item('span', 'pf', NAMES[pf]));
+      name.appendChild(item('span', 'count', counts[pf] + (counts[pf] === 1 ? ' post' : ' posts')));
+      row.appendChild(name);
+      row.appendChild(item('span', 'cb-badge ' + r[0], r[1]));
+      list.appendChild(row);
+    });
+    $('cb-total').textContent = found.posts.length ? found.posts.length + (found.posts.length === 1 ? ' post link found' : ' post links found') : 'No post links yet';
+
+    var notes = $('cb-notes');
+    notes.textContent = '';
+    found.notPost.forEach(function (it) { notes.appendChild(item('li', 'warn', it.text + ' looks like a ' + NAMES[it.platform] + ' profile or page, not a single post. Paste the link of each post instead.')); });
+    found.unknown.forEach(function (t) { notes.appendChild(item('li', 'warn', t + ' is not a YouTube, Instagram, Facebook, TikTok, X or Reddit link.')); });
+    if (found.twice) notes.appendChild(item('li', 'info', (found.twice === 1 ? '1 link was' : found.twice + ' links were') + ' pasted twice and will be read once.'));
+    if (counts.x) notes.appendChild(item('li', 'info', 'X: only posts from the last 7 days can be read, and reading uses the paid credit you buy from X.'));
+
+    var need = state.mode === 'own' ? CHOICE.filter(function (pf) { return counts[pf]; }) : [];
+    $('cb-route-part').hidden = need.length === 0;
+    var routes = $('cb-routes');
+    routes.textContent = '';
+    need.forEach(function (pf) {
+      var row = item('div', 'cb-route-row'), seg = item('div', 'seg');
+      row.appendChild(item('b', '', NAMES[pf]));
+      seg.setAttribute('role', 'group');
+      seg.setAttribute('aria-label', 'How to read your ' + NAMES[pf] + ' posts');
+      [['official', pf === 'tiktok' ? 'Official connector' : 'Official API', 'off'], ['scrapecreators', 'ScrapeCreators', 'sc']].forEach(function (opt) {
+        var b = item('button', opt[2], opt[1]);
+        b.type = 'button';
+        b.setAttribute('aria-pressed', String(state.routes[pf] === opt[0]));
+        b.addEventListener('click', function () { state.routes[pf] = state.routes[pf] === opt[0] ? null : opt[0]; render(); });
+        seg.appendChild(b);
+      });
+      row.appendChild(seg);
+      var chosen = state.routes[pf];
+      row.appendChild(item('p', 'cb-sub', !chosen ? 'Not chosen: the agent will ask you.'
+        : chosen === 'official' && pf === 'facebook' ? 'Reads Facebook Pages only. For a personal profile, choose ScrapeCreators.'
+        : chosen === 'official' && pf === 'tiktok' ? 'Free. You add the official TikTok connector to your AI app once.'
+        : chosen === 'official' ? 'Free. Needs your own Meta app; you do every click on Meta\'s site.'
+        : 'Paid credits, one key. Also reads other people\'s posts.'));
+      routes.appendChild(row);
+    });
+
+    var table = $('cb-table');
+    table.classList.toggle('focus-own', state.mode === 'own');
+    table.classList.toggle('focus-others', state.mode === 'others');
+    Array.prototype.forEach.call(table.querySelectorAll('tbody tr'), function (tr) {
+      tr.classList.toggle('dim', present.length > 0 && !counts[tr.getAttribute('data-pf')]);
+    });
+
+    var chosenRoutes = need.filter(function (pf) { return state.routes[pf]; }).map(function (pf) {
+      return NAMES[pf] + ': ' + (state.routes[pf] === 'official' ? OFFICIAL[pf] : 'ScrapeCreators');
+    });
+    var pre = $('cb-request');
+    pre.textContent = '';
+    pre.appendChild(document.createTextNode('Use the comment themes workflow at ' + REPO + '. If it is not set up in this folder yet, set it up first by following its AGENTS.md.\n\n'
+      + (state.mode === 'own' ? 'Sort the comments on these posts of mine into themes.' : 'Sort the comments on these posts into themes. They are not my posts.') + '\n\nPosts:\n'));
+    if (found.posts.length) pre.appendChild(document.createTextNode(found.posts.map(function (p) { return p.text; }).join('\n')));
+    else pre.appendChild(item('span', 'cb-gap', '[paste your post links in step 1]'));
+    pre.appendChild(document.createTextNode((chosenRoutes.length ? '\n\nRead my own posts through ' + chosenRoutes.join('; ') + '.' : '')
+      + '\n\nAsk me one thing at a time. Never ask me to paste a key or password into this chat: give me a command that saves it. Tell me what anything costs before you spend it.'));
+    $('cb-example').hidden = !state.example;
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-cb-mode]'), function (b) {
+    b.addEventListener('click', function () { state.mode = b.getAttribute('data-cb-mode'); render(); });
+  });
+  links.addEventListener('input', function () { state.example = false; render(); });
+  $('cb-clear').addEventListener('click', function () { links.value = ''; state.example = false; render(); links.focus(); });
+  links.value = EXAMPLE;
+  render();
+})();
+</script>
+</div>
+
 <div class="view" data-view="planned" hidden>
   <header class="site-head gut">
     <div class="site-head-in">
@@ -1394,13 +1923,13 @@ Triggered at: 10:00 EST</pre>
 
   /* Pages: one view per hash */
   var planned = {
-    'sort-comments': 'Sorting comments and messages into themes',
+    'sort-comments': 'Sorting comments into themes',
     'track-competitors': 'Tracking competitor accounts (text only)',
     'organize-content': 'Organizing past content and assets',
     'analytics-report': 'Drafting a recurring report from analytics',
     'script-outline': 'Researching and outlining a script'
   };
-  var routes = { home: 'home', workflows: 'home', setup: 'setup', 'trend-topics': 'task' };
+  var routes = { home: 'home', workflows: 'home', setup: 'setup', 'trend-topics': 'task', 'sort-comments': 'task-comments' };
   var views = Array.prototype.slice.call(document.querySelectorAll('.view'));
   var protoLinks = Array.prototype.slice.call(document.querySelectorAll('.proto-pages a'));
   var shownView = null;
