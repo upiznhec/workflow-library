@@ -1672,7 +1672,14 @@ Triggered at: 10:00 EST</pre>
 
     <section class="sec" aria-labelledby="cb-wrong">
       <div class="sec-head"><p class="eyebrow">Troubleshooting</p><h2 id="cb-wrong">If it goes wrong</h2></div>
-      <div class="ph">[Problems our testers ran into, and how they fixed them, will go here after testing]</div>
+      <p class="chapters">From our tests with Claude Code (November 2026). More are added as testers report them.</p>
+      <div class="folds">
+        <h3 class="fold-group">The first time you use a platform</h3>
+        <details class="fold" open>
+          <summary><span>Your agent says the key you saved doesn't work</span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+          <div class="fold-body"><span><strong>What it looks like:</strong> Right after you saved a key, your agent says the service doesn't accept it (for example "HTTP 401"), or the save command answers "This is a command, not the key".</span><span><strong>What to do:</strong> Something other than the key was on your clipboard, often the save command itself. Run the save command again. While it waits, go to the key's page, click Copy, come back and paste. The line under the question counts the characters you pasted: a key is one long code with no spaces.</span></div>
+        </details>
+      </div>
       <div class="checks">
         <strong>How experienced users check</strong>
         <ul>
