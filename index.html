@@ -589,6 +589,7 @@ pre, code { font-variant-ligatures: none; }
 .cb-found li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 14px; border-radius: var(--r-sm); background: var(--ph); }
 .cb-found .pf { font-weight: 700; }
 .cb-found .count { margin-left: 8px; color: var(--ink-3); font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cb-found .cb-row-note { grid-column: 1 / -1; margin-top: -4px; color: var(--ink-2); font-size: 13.5px; line-height: 1.5; }
 .cb-badge { justify-self: end; padding: 4px 10px; border-radius: 999px; border: 1px solid transparent; font-size: 12.5px; font-weight: 700; white-space: nowrap; }
 .cb-badge.off { background: var(--off-bg); color: var(--off-ink); border-color: var(--off-line); }
 .cb-badge.sc { background: var(--sc-bg); color: var(--sc-ink); border-color: var(--sc-line); }
@@ -1501,7 +1502,7 @@ Triggered at: 10:00 EST</pre>
                         <td data-label="Official API">Free, except X, which charges up to about 1.5 US cents for each reply it reads.</td>
                         <td data-label="ScrapeCreators">About 1 credit for every 10 to 20 comments, so a post with 100 comments takes about 5 to 10 credits. You get 100 credits free, no card needed.</td></tr>
                       <tr><th scope="row">Setup</th>
-                        <td data-label="Official API">More work. You create keys or an app, and some platforms only work with a professional account.</td>
+                        <td data-label="Official API">More work. You create keys or an app, and some platforms only work with a business or professional account.</td>
                         <td data-label="ScrapeCreators">Easy. One key from scrapecreators.com works for Instagram, Facebook, TikTok and Reddit.</td></tr>
                       <tr><th scope="row">Whose posts</th>
                         <td data-label="Official API">On most platforms, only your own. YouTube and X let you read anyone's.</td>
@@ -1520,7 +1521,7 @@ Triggered at: 10:00 EST</pre>
                   <dl class="cb-platforms">
                     <dt>YouTube</dt><dd>YouTube Data API. Free, with an API key you create in Google Cloud. You get 10,000 units a day, and reading up to 100 comments uses 1 unit. It works for any public video.</dd>
                     <dt>Instagram</dt><dd>Instagram API, through a Meta app you create yourself. Free. It needs an Instagram professional account (business or creator) linked to a Facebook Page you manage, and it only reads that account's posts. Commenters' usernames are included.</dd>
-                    <dt>Facebook</dt><dd>Facebook Pages API, through the same Meta app. Free. It only reads posts on Pages you manage, not personal profiles. While your Meta app is in development mode, other people's comments come without their names.</dd>
+                    <dt>Facebook</dt><dd>Facebook Pages API, through the same Meta app. Free. It only reads posts on business accounts (Facebook Pages you manage), not on personal profiles, even in professional mode. While your Meta app is in development mode, other people's comments come without their names.</dd>
                     <dt>TikTok</dt><dd>TikTok's official connector for AI apps. Free, and it works with personal accounts: you sign in with TikTok, and the permission lasts a year. It only reads your own videos. On a video with more than 500 comments, the rest come sorted by likes and some may repeat.</dd>
                     <dt>X</dt><dd>X API, paid from credit you buy at console.x.com: about US$0.005 for each post or reply it reads, plus US$0.010 for each different person. There are no automatic top-ups. Posts of any age can be read. For posts older than 7 days it uses X's full-archive search, which is included when you pay per use.</dd>
                     <dt>Reddit</dt><dd>This workflow reads Reddit through ScrapeCreators only.</dd>
@@ -1540,10 +1541,10 @@ Triggered at: 10:00 EST</pre>
                         <td class="col-own"><span class="cb-chip off">Official API<small>free</small></span></td>
                         <td class="col-others"><span class="cb-chip off">Official API<small>free</small></span></td></tr>
                       <tr data-pf="instagram"><td class="pf">Instagram</td>
-                        <td class="col-own"><span class="cb-chip off">Official API</span><span class="cb-chip sc">ScrapeCreators</span></td>
+                        <td class="col-own"><span class="cb-chip off">Official API<small>for professional accounts</small></span><span class="cb-chip sc">ScrapeCreators<small>for personal accounts</small></span></td>
                         <td class="col-others"><span class="cb-chip sc">ScrapeCreators</span></td></tr>
                       <tr data-pf="facebook"><td class="pf">Facebook</td>
-                        <td class="col-own"><span class="cb-chip off">Official API<small>Pages only</small></span><span class="cb-chip sc">ScrapeCreators</span></td>
+                        <td class="col-own"><span class="cb-chip off">Official API<small>for business accounts</small></span><span class="cb-chip sc">ScrapeCreators<small>for non-business accounts</small></span></td>
                         <td class="col-others"><span class="cb-chip sc">ScrapeCreators</span></td></tr>
                       <tr data-pf="tiktok"><td class="pf">TikTok</td>
                         <td class="col-own"><span class="cb-chip off">Official connector</span><span class="cb-chip sc">ScrapeCreators</span></td>
@@ -1595,7 +1596,8 @@ Triggered at: 10:00 EST</pre>
               <div class="card">
                 <strong>The first time you use a platform</strong>
                 <ul>
-                  <li>It may need a key or a connection for that platform. For ScrapeCreators, YouTube and X, if your agent can use the browser you're already logged in to, it opens the pages and does the clicks. You only log in, then make and copy the key. Instagram and Facebook need your own Meta app, and there you do every click yourself. TikTok needs its connector added to your AI app.</li>
+                  <li>It may need a key or a connection for that platform. For ScrapeCreators, YouTube and X, if your agent can use the browser you're already logged in to, it opens the pages and does the clicks. You only log in, then make and copy the key. Instagram and Facebook need your own Meta app, and there you do every click yourself. TikTok needs TikTok's connector added to your AI app, and your agent shows you how.</li>
+                  <li>When you log in, use the account your posts belong to: for example, the Facebook profile that manages your Page, or the TikTok account that posted the video. For a YouTube key, use a personal Google account, such as your channel's, not a school or work account.</li>
                   <li>It gives you a command that saves the key on your computer. You never paste a key into the chat.</li>
                   <li>If you didn't choose how to read your own Instagram, Facebook or TikTok posts, it asks you once and remembers your answer.</li>
                 </ul>
@@ -1604,7 +1606,7 @@ Triggered at: 10:00 EST</pre>
                 <strong>Every time</strong>
                 <ul>
                   <li>Before it reads anything that costs money, it tells you how many comments each post has and what reading them will cost, and waits for your OK.</li>
-                  <li>If it can't match a link to your Facebook Page, it shows your Page's latest posts and asks which one you meant.</li>
+                  <li>If it can't match a link to your Facebook Page, it first checks with you that the post is on that Page, then shows the Page's latest posts and asks which one you meant.</li>
                 </ul>
               </div>
             </div>
@@ -1807,6 +1809,7 @@ Triggered at: 10:00 EST</pre>
       name.appendChild(item('span', 'count', counts[pf] + (counts[pf] === 1 ? ' post' : ' posts')));
       row.appendChild(name);
       row.appendChild(item('span', 'cb-badge ' + r[0], r[1]));
+      if (pf === 'facebook' && state.mode === 'own') row.appendChild(item('span', 'cb-row-note', 'If you use the Official API, this post must be on a business account (a Facebook Page you manage), not on a personal profile, even one in professional mode.'));
       list.appendChild(row);
     });
     $('cb-total').textContent = found.posts.length ? found.posts.length + (found.posts.length === 1 ? ' link found' : ' links found') : 'No links yet';
@@ -1837,7 +1840,7 @@ Triggered at: 10:00 EST</pre>
       row.appendChild(seg);
       var chosen = state.routes[pf];
       row.appendChild(item('p', 'cb-sub', !chosen ? 'Not chosen yet. Your agent will ask you.'
-        : chosen === 'official' && pf === 'facebook' ? 'Only works for Facebook Pages. If you post from a personal profile, choose ScrapeCreators.'
+        : chosen === 'official' && pf === 'facebook' ? 'Only works for business accounts (Facebook Pages you manage). If you post from a personal profile, even one in professional mode, choose ScrapeCreators.'
         : chosen === 'official' && pf === 'tiktok' ? 'Free. You\'ll add TikTok\'s official connector to your AI app once.'
         : chosen === 'official' ? 'Free. You\'ll set up your own Meta app, and do the clicking on Meta\'s site yourself.'
         : 'Paid, but one key is all you need, and it also works for other people\'s posts.'));
