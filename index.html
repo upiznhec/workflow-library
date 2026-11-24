@@ -1499,11 +1499,24 @@ Triggered at: 10:00 EST</pre>
 
     <section class="sec" aria-labelledby="cb-video">
       <div class="sec-head"><p class="eyebrow">Video</p><h2 id="cb-video">Watch it done</h2></div>
-      <button type="button" class="video" data-toast="The walkthrough video is recorded during testing.">
-        <svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><circle cx="32" cy="32" r="29"></circle><path d="M26 21 L44 32 L26 43 Z"></path></svg>
-        <span>[A video of the whole process, recorded during testing]</span>
-      </button>
-      <p class="chapters">Chapters: [Making the request] · [Setting up a key] · [Reading the report] · [Asking your own questions]</p>
+      <div class="lane video-lane">
+        <div class="lane-main"><div class="video-embed"><iframe id="yt-player-cb" src="https://www.youtube-nocookie.com/embed/ixA8HYTvuXA?enablejsapi=1&amp;rel=0&amp;playsinline=1" title="Full walkthrough video, 26 minutes 16 seconds" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
+        <div class="lane-side">
+          <nav class="ch-card" aria-labelledby="cb-chapters">
+            <div class="ch-head"><h3 id="cb-chapters">Chapters</h3></div>
+            <ol class="ch-list">
+            <li><a href="https://youtu.be/ixA8HYTvuXA?t=0" target="_blank" rel="noopener" data-t="0"><span class="ch-time">00:00</span><span class="ch-title">Intro</span><span class="sr-only">, opens on YouTube in a new tab</span></a></li>
+            <li><a href="https://youtu.be/ixA8HYTvuXA?t=341" target="_blank" rel="noopener" data-t="341"><span class="ch-time">05:41</span><span class="ch-title">Through ScrapeCreators</span><span class="sr-only">, opens on YouTube in a new tab</span></a></li>
+            <li><a href="https://youtu.be/ixA8HYTvuXA?t=539" target="_blank" rel="noopener" data-t="539"><span class="ch-time">08:59</span><span class="ch-title">Through the X API</span><span class="sr-only">, opens on YouTube in a new tab</span></a></li>
+            <li><a href="https://youtu.be/ixA8HYTvuXA?t=717" target="_blank" rel="noopener" data-t="717"><span class="ch-time">11:57</span><span class="ch-title">Reading the report</span><span class="sr-only">, opens on YouTube in a new tab</span></a></li>
+            <li><a href="https://youtu.be/ixA8HYTvuXA?t=845" target="_blank" rel="noopener" data-t="845"><span class="ch-time">14:05</span><span class="ch-title">Through the YouTube API</span><span class="sr-only">, opens on YouTube in a new tab</span></a></li>
+            <li><a href="https://youtu.be/ixA8HYTvuXA?t=1042" target="_blank" rel="noopener" data-t="1042"><span class="ch-time">17:22</span><span class="ch-title">Through the Meta API</span><span class="sr-only">, opens on YouTube in a new tab</span></a></li>
+            <li><a href="https://youtu.be/ixA8HYTvuXA?t=1454" target="_blank" rel="noopener" data-t="1454"><span class="ch-time">24:14</span><span class="ch-title">Through the TikTok connector</span><span class="sr-only">, opens on YouTube in a new tab</span></a></li>
+            <li><a href="https://youtu.be/ixA8HYTvuXA?t=1523" target="_blank" rel="noopener" data-t="1523"><span class="ch-time">25:23</span><span class="ch-title">Ending</span><span class="sr-only">, opens on YouTube in a new tab</span></a></li>
+            </ol>
+          </nav>
+        </div>
+      </div>
     </section>
 
     <section class="sec" aria-labelledby="cb-steps">
@@ -2870,44 +2883,55 @@ The new numbers are <span class="cb-gap">[in this folder / attached / typed belo
 
 <script>
 (function () {
-  var frame = document.getElementById('yt-player'), list = document.querySelector('.ch-list');
-  if (!frame || !list) return;
-  var links = Array.prototype.slice.call(list.querySelectorAll('a[data-t]'));
-  var starts = links.map(function (a) { return +a.getAttribute('data-t'); });
+  var frames = Array.prototype.slice.call(document.querySelectorAll('.video-embed iframe[id]'));
   var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  var player = null, ready = false, timer = null;
-  /* The chapter that is playing is marked, like the chapter list on YouTube. */
-  function mark(t) {
-    var k = -1;
-    for (var i = 0; i < starts.length; i++) if (t >= starts[i]) k = i;
-    links.forEach(function (a, i) { if (i === k) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
-  }
-  function tick() { if (ready) mark(player.getCurrentTime() || 0); }
-  window.onYouTubeIframeAPIReady = function () {
-    player = new YT.Player('yt-player', { events: {
-      onReady: function () {
-        ready = true;
-        links.forEach(function (a) {
-          a.removeAttribute('target');
-          var sr = a.querySelector('.sr-only'); if (sr) sr.textContent = ', plays in the video player';
-        });
-      },
-      onStateChange: function (e) {
-        clearInterval(timer);
-        if (e.data === YT.PlayerState.PLAYING) timer = setInterval(tick, 1000);
-        tick();
-      }
-    } });
-  };
-  list.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[data-t]');
-    if (!a || !ready) return;
-    e.preventDefault();
-    var t = +a.getAttribute('data-t');
-    player.seekTo(t, true); player.playVideo(); mark(t);
-    var r = frame.getBoundingClientRect();
-    if (r.top < 0 || r.bottom > window.innerHeight) frame.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+  var videos = [];
+  frames.forEach(function (frame) {
+    var sec = frame.closest('section'), list = sec && sec.querySelector('.ch-list');
+    if (!list) return;
+    var v = { frame: frame, links: Array.prototype.slice.call(list.querySelectorAll('a[data-t]')), player: null, ready: false, timer: null };
+    v.starts = v.links.map(function (a) { return +a.getAttribute('data-t'); });
+    /* The chapter that is playing is marked, like the chapter list on YouTube. */
+    v.mark = function (t) {
+      var k = -1;
+      for (var i = 0; i < v.starts.length; i++) if (t >= v.starts[i]) k = i;
+      v.links.forEach(function (a, i) { if (i === k) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+    };
+    v.tick = function () { if (v.ready) v.mark(v.player.getCurrentTime() || 0); };
+    list.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[data-t]');
+      if (!a || !v.ready) return;
+      e.preventDefault();
+      var t = +a.getAttribute('data-t');
+      v.player.seekTo(t, true); v.player.playVideo(); v.mark(t);
+      var r = frame.getBoundingClientRect();
+      if (r.top < 0 || r.bottom > window.innerHeight) frame.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+    });
+    videos.push(v);
   });
+  if (!videos.length) return;
+  function pauseAll(except) {
+    videos.forEach(function (v) { if (v !== except && v.ready && v.player.pauseVideo) v.player.pauseVideo(); });
+  }
+  window.onYouTubeIframeAPIReady = function () {
+    videos.forEach(function (v) {
+      v.player = new YT.Player(v.frame.id, { events: {
+        onReady: function () {
+          v.ready = true;
+          v.links.forEach(function (a) {
+            a.removeAttribute('target');
+            var sr = a.querySelector('.sr-only'); if (sr) sr.textContent = ', plays in the video player';
+          });
+        },
+        onStateChange: function (e) {
+          clearInterval(v.timer);
+          if (e.data === YT.PlayerState.PLAYING) { pauseAll(v); v.timer = setInterval(v.tick, 1000); }
+          v.tick();
+        }
+      } });
+    });
+  };
+  window.addEventListener('hashchange', function () { pauseAll(null); });
   var s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api'; s.async = true;
   document.head.appendChild(s);
 })();
