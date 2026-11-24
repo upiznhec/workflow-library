@@ -711,6 +711,7 @@ pre, code { font-variant-ligatures: none; }
     <a href="#home" data-page="home">Home</a>
     <a href="#setup" data-page="setup">Get set up</a>
     <a href="#sort-comments" data-page="task-comments">Comment sorting</a>
+    <a href="#analytics-report" data-page="task-report">Recurring report</a>
     <a href="#script-outline" data-page="task-script">Script research</a>
     <a href="#trend-topics" data-page="trend-topics">Trend tracking</a>
   </div>
@@ -773,7 +774,7 @@ pre, code { font-variant-ligatures: none; }
         </a>
         <a class="wf-card" href="#analytics-report">
           <span class="wf-icon" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4 H27 L35 12 V40 H10 Z"></path><path d="M27 4 V12 H35"></path><path d="M16 34 V27"></path><path d="M22 34 V22"></path><path d="M28 34 V30"></path></svg></span>
-          <span class="wf-text"><strong>Drafting a recurring report from analytics</strong><span class="wf-desc">Turn an analytics export into a first draft of your regular report.</span></span>
+          <span class="wf-text"><strong>Drafting a recurring report from analytics</strong><span class="wf-desc">Give your agent your numbers and get a first draft of your regular report, with what changed and what to try next.</span></span>
         </a>
         <a class="wf-card" href="#script-outline">
           <span class="wf-icon" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11 H22"></path><path d="M6 18 H18"></path><path d="M6 25 H14"></path><path d="M33 8 L38 13 L22 29 L15 31 L17 24 Z"></path><path d="M6 36 H34"></path></svg></span>
@@ -2249,6 +2250,278 @@ Before you use any defaults, ask me up to 3 questions, one at a time, about anyt
   </footer>
 </div>
 
+<div class="view" data-view="task-report" hidden>
+  <header class="site-head gut">
+    <div class="site-head-in">
+      <a class="brand" href="#home">Social Media AI Workflow Library</a>
+      <nav class="site-nav" aria-label="Site">
+        <a href="#workflows">Workflows</a>
+        <a href="#setup">Get set up</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="t-main gut">
+    <div class="t-head">
+      <a class="back" href="#workflows">← All workflows</a>
+      <h1 id="ar-title" tabindex="-1">Drafting a recurring report from analytics</h1>
+      <div class="meta">
+        <span class="pill-testing">Testing in progress</span>
+        <span>Made by Anthropic, the company that makes Claude. [Tested with …, added after our tests]</span>
+      </div>
+      <div class="credit">
+        <strong>Source and terms of use</strong>
+        <span>This workflow uses <a href="https://github.com/anthropics/knowledge-work-plugins/blob/0835fae45b2c7e7dd98b732c67a899c2bedc9b20/marketing/skills/performance-report/SKILL.md" target="_blank" rel="noopener noreferrer">performance-report</a>, a free skill (a file of written instructions for AI agents) from the marketing plugin in Anthropic's <a href="https://github.com/anthropics/knowledge-work-plugins" target="_blank" rel="noopener noreferrer">knowledge-work-plugins</a>, published under the Apache License 2.0. In the first way below, Claude Code installs Anthropic's marketing plugin, which includes it. In the second way, your agent downloads the version of March 18, 2026, as it is, straight from Anthropic's GitHub page. This library is not affiliated with or endorsed by Anthropic.</span>
+      </div>
+    </div>
+
+    <section class="sec" aria-labelledby="ar-over">
+      <div class="sec-head"><p class="eyebrow">Overview</p><h2 id="ar-over">What this workflow does</h2></div>
+      <div class="lane">
+        <div class="lane-main">
+          <p class="lead">Your agent turns your social media numbers into a first draft of your regular report, such as a weekly or monthly one: a short summary, a table of this period against the one before, what worked, what didn't, and what to try next. After the first report, it can save the layout as a template, so the next one only needs new numbers.</p>
+          <p class="lead">There are two ways to give it your numbers. You choose one at the top of the Steps.</p>
+          <ul class="sf-list">
+            <li><strong>If you use Claude Code and pay for a data service such as Supermetrics:</strong> install Anthropic's marketing plugin and connect the service. Claude Code then gets your numbers from the service itself.</li>
+            <li><strong>Otherwise, with any agent:</strong> download your numbers from each platform's analytics page, and your agent works from those files. Nothing is installed.</li>
+          </ul>
+          <div class="need">
+            <strong>Before you start</strong>
+            <ul>
+              <li>An AI agent that can go online and work with files on your computer. If you don't have one yet, see <a href="#setup">Get set up</a>.</li>
+              <li>For the first way: Claude Code, and an account with one of the data services listed in the Steps.</li>
+              <li>For the second way: your numbers, downloaded from each platform. The Steps show where to find them on TikTok, Instagram, Facebook, YouTube and X.</li>
+            </ul>
+            <p>The instructions are free. In the first way, you also pay what your data service charges. Your agent costs what it normally costs.</p>
+            <div class="need-meta"><span>[Cost of one report in our test, added after testing]</span></div>
+          </div>
+          <div class="out-row">
+            <span class="pill">It reads your numbers and writes a draft. It never posts or changes anything on your accounts.</span>
+            <a href="#setup">First time using an agent? Set one up first →</a>
+          </div>
+        </div>
+        <aside class="lane-side" aria-label="In short">
+          <div class="trio-item"><strong>You give the agent</strong><span>Your numbers, from your data service or from files you download, plus the period, what to compare it with, and who will read the report.</span></div>
+          <div class="trio-item"><strong>You get back</strong><span>A first draft of your report: a short summary, a table of your main numbers next to last period's, what worked, what didn't, and what to try next.</span></div>
+          <div class="trio-item"><strong>You still check</strong><span>That the numbers match your analytics pages, that its reasons make sense (they are its best guesses), and the wording before you send the report on.</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="ar-video">
+      <div class="sec-head"><p class="eyebrow">Video</p><h2 id="ar-video">Watch it done</h2></div>
+      <button type="button" class="video" data-toast="The walkthrough video is recorded during testing.">
+        <svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><circle cx="32" cy="32" r="29"></circle><path d="M26 21 L44 32 L26 43 Z"></path></svg>
+        <span>[A video of the whole process, recorded during testing]</span>
+      </button>
+      <p class="chapters">Chapters: [Downloading the numbers] · [Sending the request] · [Checking the report] · [Saving the template]</p>
+    </section>
+
+    <section class="sec" aria-labelledby="ar-steps">
+      <div class="sec-head"><p class="eyebrow">Steps</p><h2 id="ar-steps">Steps</h2></div>
+      <p>Choose how your agent gets your numbers. The steps below change with your choice.</p>
+      <div class="seg" role="group" aria-label="How your agent gets your numbers">
+        <button type="button" data-ar-way="service" aria-pressed="true">Claude Code with a paid data service</button>
+        <button type="button" data-ar-way="files" aria-pressed="false">Otherwise: files you download</button>
+      </div>
+
+      <div data-ar-way-panel="service">
+        <div class="lane-main">
+            <p>Use this way if you use Claude Code and pay for one of the data services below. Claude Code then gets your numbers from the service, so you don't download any files.</p>
+            <div class="tbl-wrap">
+              <table>
+                <thead><tr><th scope="col">Data service</th><th scope="col">What Anthropic says it's for</th></tr></thead>
+                <tbody>
+                  <tr><td>Supermetrics</td><td>Marketing data from many platforms, for analysis and reports</td></tr>
+                  <tr><td>Amplitude</td><td>Product analytics: how people use your app or website</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Anthropic's marketing plugin comes set up for these two. Anthropic says other services of the same kind also work if you connect them to Claude Code yourself: Google Analytics, Mailchimp or Semrush for marketing data, and Mixpanel or Google Analytics for product data.</p>
+            <div class="need">
+              <strong>What Anthropic says</strong>
+              <ul>
+                <li>Anthropic made the marketing plugin mainly for Cowork, its desktop app, and says it also works in Claude Code. To install it, run these two commands in a terminal:</li>
+              </ul>
+              <div class="req">
+                <div class="req-head"><span>Commands</span><button type="button" class="btn btn-line btn-sm" data-copy="ar-install">Copy</button></div>
+                <pre id="ar-install">claude plugin marketplace add anthropics/knowledge-work-plugins
+claude plugin install marketing@knowledge-work-plugins</pre>
+              </div>
+              <ul>
+                <li>To connect your data service, open the /mcp menu in Claude Code, choose the service and sign in. The sign-in opens in your browser.</li>
+                <li>Once the plugin is installed, its skills start by themselves when they're relevant, and its commands begin with the plugin's name. The report's command is <code>/marketing:performance-report</code>, which builds a marketing performance report with key numbers, trends and suggestions. You can also just ask Claude Code for a performance report.</li>
+                <li>When a marketing data service is connected, the report's instructions look up which accounts and platforms it has, then get the numbers automatically.</li>
+              </ul>
+              <div class="need-meta"><span>From Anthropic's pages: <a href="https://github.com/anthropics/knowledge-work-plugins/tree/main/marketing" target="_blank" rel="noopener noreferrer">the marketing plugin</a>, <a href="https://github.com/anthropics/knowledge-work-plugins/blob/main/marketing/CONNECTORS.md" target="_blank" rel="noopener noreferrer">its connections</a>, <a href="https://github.com/anthropics/knowledge-work-plugins" target="_blank" rel="noopener noreferrer">the plugin collection</a> and <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener noreferrer">Claude Code's guide to connections</a></span></div>
+            </div>
+        </div>
+      </div>
+
+      <div data-ar-way-panel="files" hidden>
+        <ol class="steps">
+
+          <li class="step">
+            <div class="step-head"><span class="num" aria-hidden="true">1</span><h3>Download your numbers</h3></div>
+            <div class="step-body lane">
+              <div class="lane-main">
+                <p>On a computer, download the numbers for the period you're reporting on from each platform you use. If you want the report to say what changed, also download the period before it, or choose one longer period that covers both. Put all the files in one folder, and use that folder every time.</p>
+                <ul class="sf-list">
+                  <li><strong>TikTok:</strong> open TikTok Studio in your web browser and click Analytics on the left. Choose the dates, then download the data. You can download up to 365 days at a time. (<a href="https://www.tiktok.com/creator-academy/en/article/tool-analytics-intro" target="_blank" rel="noopener noreferrer">TikTok's guide</a>)</li>
+                  <li><strong>Facebook and Instagram:</strong> open Meta Business Suite and choose your Facebook Page or Instagram account in the menu at the top left. Click Insights in the left menu, open the numbers you need, then click Export and choose a file type. Instagram accounts need to be professional accounts to have these numbers. (<a href="https://www.facebook.com/help/972879969525875" target="_blank" rel="noopener noreferrer">Meta's guide</a>)</li>
+                  <li><strong>YouTube:</strong> open YouTube Studio and click Insights in the left menu (it used to be called Analytics). Open a report, click Advanced mode, and choose the dates. Then click Export current view at the top and choose a file type. Each download holds up to 500 rows. (<a href="https://support.google.com/youtube/answer/9717005?hl=en" target="_blank" rel="noopener noreferrer">YouTube's guide</a>)</li>
+                  <li><strong>X:</strong> go to analytics.x.com and open the Posts tab, or, if you have an X ads account, choose Analytics, then Post activity, on ads.x.com. Choose the dates and click Export. Each download covers up to 30 days and up to 3,000 posts. X says these pages are free. (<a href="https://business.x.com/en/help/campaign-measurement-and-analytics/tweet-activity-dashboard" target="_blank" rel="noopener noreferrer">X's guide</a>)</li>
+                  <li><strong>Any other platform, or no download button:</strong> copy the main numbers from its analytics page into your request.</li>
+                </ul>
+              </div>
+              <aside class="lane-side">
+                <div class="ph">[Pictures of where to download on each platform, added after testing]</div>
+              </aside>
+            </div>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="num" aria-hidden="true">2</span><h3>Send the request to your agent</h3></div>
+            <div class="step-body lane">
+              <div class="lane-main">
+                <p>Open your agent in the folder with your files. Copy the request below into it, after replacing each part in brackets with your own answer.</p>
+                <div class="req">
+                  <div class="req-head"><span>Request</span><button type="button" class="btn btn-line btn-sm" data-copy="ar-request">Copy request</button></div>
+                  <pre id="ar-request">Use Anthropic's performance report instructions at https://raw.githubusercontent.com/anthropics/knowledge-work-plugins/0835fae45b2c7e7dd98b732c67a899c2bedc9b20/marketing/skills/performance-report/SKILL.md. If they aren't in this folder yet, download them here first as performance-report.md. Then follow them.
+
+Write my <span class="cb-gap">[weekly / monthly / quarterly]</span> social media report.
+What it covers: <span class="cb-gap">[e.g., my TikTok and Instagram accounts, or one campaign]</span>
+Period: <span class="cb-gap">[e.g., October 2026]</span>
+Compare with: <span class="cb-gap">[e.g., September 2026, or the same month last year, or leave this blank]</span>
+Who reads it: <span class="cb-gap">[e.g., my manager, a client, or just me]</span>
+My numbers: <span class="cb-gap">[the files are in this folder / I've attached them / I've typed them below]</span>
+Anything else: <span class="cb-gap">[e.g., your targets for this period, or leave this blank]</span></pre>
+                </div>
+              </div>
+              <aside class="lane-side">
+                <div class="card callout">
+                  <strong class="callout-title"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M2 6V14H14V6Z" opacity="0.3"/><path d="M5 3V6H11V3H5Z"/></svg>What's in the request</strong>
+                  <span>The first line tells your agent where the instructions are, and to download them into this folder the first time. Nothing is installed on your computer.</span>
+                  <span>The other lines tell it what the report is for. These are the things the instructions ask about, so it can start writing without guessing.</span>
+                </div>
+              </aside>
+            </div>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="num" aria-hidden="true">3</span><h3>Check the report</h3></div>
+            <div class="step-body lane">
+              <div class="lane-main">
+                <p>Compare the main numbers in its table with your analytics pages. Then read what it says worked and what didn't. Its reasons are guesses from the numbers, so correct them with what you know, and tell it what to change.</p>
+              </div>
+              <aside class="lane-side">
+                <div class="card callout">
+                  <strong class="callout-title"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M2 6V14H14V6Z" opacity="0.3"/><path d="M5 3V6H11V3H5Z"/></svg>Tell it what the files don't show</strong>
+                  <span>A holiday, a paid boost or a post that a bigger account shared can change your numbers, but none of this is in the files. Tell your agent, so its reasons and ideas take it into account.</span>
+                </div>
+              </aside>
+            </div>
+          </li>
+
+          <li class="step full">
+            <div class="step-head"><span class="num" aria-hidden="true">4</span><h3>Save it for next time</h3></div>
+            <div class="step-body">
+              <p>When the report is done, your agent offers to set up a template you can reuse next period. Say yes, and ask it to keep the template in this folder.</p>
+              <p>Next time, download the new numbers into the same folder and send this request:</p>
+              <div class="req">
+                <div class="req-head"><span>Next time</span><button type="button" class="btn btn-line btn-sm" data-copy="ar-next">Copy request</button></div>
+                <pre id="ar-next">Use the performance report instructions and the report template in this folder.
+Write my report for <span class="cb-gap">[the new period, e.g., November 2026]</span>, compared with <span class="cb-gap">[e.g., October 2026]</span>.
+The new numbers are <span class="cb-gap">[in this folder / attached / typed below]</span>.</pre>
+              </div>
+              <details class="fold">
+                <summary>More requests to send your agent<svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+                <div class="fold-body later">
+                  <div class="later-item"><b>Make slides</b><div class="later-row"><pre id="ar-later-1">Make a slide-ready summary of this report.</pre><button type="button" class="btn btn-line btn-sm" data-copy="ar-later-1">Copy</button></div></div>
+                  <div class="later-item"><b>Write an email</b><div class="later-row"><pre id="ar-later-2">Write an email to [who will read it] with the main points of this report.</pre><button type="button" class="btn btn-line btn-sm" data-copy="ar-later-2">Copy</button></div></div>
+                  <div class="later-item"><b>Look more closely</b><div class="later-row"><pre id="ar-later-3">Look more closely at [a number or a platform] in this report and tell me what's behind it.</pre><button type="button" class="btn btn-line btn-sm" data-copy="ar-later-3">Copy</button></div></div>
+                  <div class="later-item"><b>Remove the workflow</b><div class="later-row"><pre id="ar-later-4">Remove the performance report instructions from this folder. Keep my reports, templates and numbers. Show me what you would delete and wait for my OK.</pre><button type="button" class="btn btn-line btn-sm" data-copy="ar-later-4">Copy</button></div></div>
+                </div>
+              </details>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="ar-wrong">
+      <div class="sec-head"><p class="eyebrow">Troubleshooting</p><h2 id="ar-wrong">If it goes wrong</h2></div>
+      <div class="ph">[Problems testers report, with what fixed them, added after our tests]</div>
+      <div class="checks">
+        <strong>How experienced users check</strong>
+        <ul>
+          <li>Run the same prompt in a second agent and compare the results.</li>
+          <li>Work out whether the problem is the prompt or the service.</li>
+          <li>Fix it one step at a time with follow-up instructions.</li>
+          <li>Ask the agent where each fact came from, then check the source.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="ar-rate" data-rating>
+      <div class="sec-head"><p class="eyebrow">Feedback</p><h2 id="ar-rate">Rate this page and this workflow</h2></div>
+      <div class="rate-rows">
+        <div class="rate-row">
+          <span id="ar-rate-page-label">How clear was this page?</span>
+          <div class="stars" role="radiogroup" aria-labelledby="ar-rate-page-label">
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="1 star"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="2 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="3 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="4 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="5 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+      </div>
+        </div>
+        <div class="rate-row">
+          <span id="ar-rate-flow-label">Did this workflow work for you?</span>
+          <div class="stars" role="radiogroup" aria-labelledby="ar-rate-flow-label">
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="1 star"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="2 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="3 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="4 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+        <button type="button" class="star" role="radio" aria-checked="false" aria-label="5 stars"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 L14.8 8.9 L21 9.6 L16.4 13.9 L17.7 20.1 L12 17 L6.3 20.1 L7.6 13.9 L3 9.6 L9.2 8.9 Z"></path></svg></button>
+      </div>
+        </div>
+      </div>
+      <div class="rate-send">
+        <button type="button" class="btn btn-dark" data-send>Send ratings</button>
+        <p class="form-msg" role="status"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot gut">
+    <div class="site-foot-in">
+      <div class="site-foot-row">
+        <a href="#workflows">← Back to all workflows</a>
+        <span>USC Annenberg · DSM 596 capstone</span>
+      </div>
+      <p>This workflow uses <a href="https://github.com/anthropics/knowledge-work-plugins/blob/0835fae45b2c7e7dd98b732c67a899c2bedc9b20/marketing/skills/performance-report/SKILL.md" target="_blank" rel="noopener noreferrer">performance-report</a> from Anthropic's knowledge-work-plugins, under the Apache License 2.0. This library is not affiliated with or endorsed by Anthropic. Platform names are trademarks of their owners.</p>
+    </div>
+  </footer>
+
+<script>
+/* Workflow 5: the two ways at the top of the Steps. Shows the panel for the way the person picks. */
+(function () {
+  'use strict';
+  var view = document.querySelector('[data-view="task-report"]');
+  if (!view) return;
+  var ways = Array.prototype.slice.call(view.querySelectorAll('[data-ar-way]'));
+  var panels = Array.prototype.slice.call(view.querySelectorAll('[data-ar-way-panel]'));
+  ways.forEach(function (b) {
+    b.addEventListener('click', function () {
+      ways.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      panels.forEach(function (p) { p.hidden = p.getAttribute('data-ar-way-panel') !== b.getAttribute('data-ar-way'); });
+    });
+  });
+})();
+</script>
+</div>
+
 <div class="view" data-view="planned" hidden>
   <header class="site-head gut">
     <div class="site-head-in">
@@ -2346,7 +2619,7 @@ Before you use any defaults, ask me up to 3 questions, one at a time, about anyt
     'analytics-report': 'Drafting a recurring report from analytics',
     'script-outline': 'Researching and outlining a script'
   };
-  var routes = { home: 'home', workflows: 'home', setup: 'setup', 'trend-topics': 'task', 'sort-comments': 'task-comments', 'script-outline': 'task-script' };
+  var routes = { home: 'home', workflows: 'home', setup: 'setup', 'trend-topics': 'task', 'sort-comments': 'task-comments', 'script-outline': 'task-script', 'analytics-report': 'task-report' };
   var views = Array.prototype.slice.call(document.querySelectorAll('.view'));
   var protoLinks = Array.prototype.slice.call(document.querySelectorAll('.proto-pages a'));
   var shownView = null;
