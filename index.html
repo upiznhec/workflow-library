@@ -2307,7 +2307,7 @@ Before you use any defaults, ask me up to 3 questions, one at a time, about anyt
       </div>
       <div class="credit">
         <strong>Source and terms of use</strong>
-        <span>This workflow uses <a href="https://github.com/anthropics/knowledge-work-plugins/blob/0835fae45b2c7e7dd98b732c67a899c2bedc9b20/marketing/skills/performance-report/SKILL.md" target="_blank" rel="noopener noreferrer">performance-report</a>, a free skill (a file of written instructions for AI agents) from the marketing plugin in Anthropic's <a href="https://github.com/anthropics/knowledge-work-plugins" target="_blank" rel="noopener noreferrer">knowledge-work-plugins</a>, published under the Apache License 2.0. In the first way below, Claude Code installs Anthropic's marketing plugin, which includes it. In the second way, your agent downloads the version of March 18, 2026, as it is, straight from Anthropic's GitHub page. This library is not affiliated with or endorsed by Anthropic.</span>
+        <span>This workflow uses <a href="https://github.com/anthropics/knowledge-work-plugins/blob/0835fae45b2c7e7dd98b732c67a899c2bedc9b20/marketing/skills/performance-report/SKILL.md" target="_blank" rel="noopener noreferrer">performance-report</a>, a free skill (a file of written instructions for AI agents) from the marketing plugin in Anthropic's <a href="https://github.com/anthropics/knowledge-work-plugins" target="_blank" rel="noopener noreferrer">knowledge-work-plugins</a>, published under the Apache License 2.0. If you use Claude Code with a paid data service, you install Anthropic's marketing plugin, which includes it. Otherwise, your agent downloads the version of March 18, 2026, as it is, straight from Anthropic's GitHub page. This library is not affiliated with or endorsed by Anthropic.</span>
       </div>
     </div>
 
@@ -2318,17 +2318,17 @@ Before you use any defaults, ask me up to 3 questions, one at a time, about anyt
           <p class="lead">Your agent turns your social media numbers into a first draft of your regular report, such as a weekly or monthly one: a short summary, a table of this period against the one before, what worked, what didn't, and what to try next. After the first report, it can save the layout as a template, so the next one only needs new numbers.</p>
           <p class="lead">There are two ways to give it your numbers. You choose one at the top of the Steps.</p>
           <ul class="sf-list">
-            <li><strong>If you use Claude Code and pay for a data service such as Supermetrics:</strong> install Anthropic's marketing plugin and connect the service. Claude Code then gets your numbers from the service itself.</li>
-            <li><strong>Otherwise, with any agent:</strong> download your numbers from each platform's analytics page, and your agent works from those files. Nothing is installed.</li>
+            <li><strong>If you have a paid data service</strong> such as Supermetrics, and use Claude Code or Codex: connect the service to your agent once. Your agent then gets your numbers from the service itself.</li>
+            <li><strong>If you don't</strong>, or you use DeepSeek Harness: download your numbers from each platform's analytics page, and your agent works from those files. This works with any agent, and nothing is installed.</li>
           </ul>
           <div class="need">
             <strong>Before you start</strong>
             <ul>
               <li>An AI agent that can go online and work with files on your computer. If you don't have one yet, see <a href="#setup">Get set up</a>.</li>
-              <li>For the first way: Claude Code, and an account with one of the data services listed in the Steps.</li>
-              <li>For the second way: your numbers, downloaded from each platform. The Steps show where to find them on TikTok, Instagram, Facebook, YouTube and X.</li>
+              <li>If you have a paid data service: Claude Code or Codex, and an account with one of the data services listed in the Steps.</li>
+              <li>If you don't: your numbers, downloaded from each platform. The Steps show where to find them on TikTok, Instagram, Facebook, YouTube and X.</li>
             </ul>
-            <p>The instructions are free. In the first way, you also pay what your data service charges. Your agent costs what it normally costs.</p>
+            <p>The instructions are free. With a data service, you also pay what it charges. Your agent costs what it normally costs.</p>
             <div class="need-meta"><span>[Cost of one report in our test, added after testing]</span></div>
           </div>
           <div class="out-row">
@@ -2356,40 +2356,54 @@ Before you use any defaults, ask me up to 3 questions, one at a time, about anyt
     <section class="sec" aria-labelledby="ar-steps">
       <div class="sec-head"><p class="eyebrow">Steps</p><h2 id="ar-steps">Steps</h2></div>
       <p>Choose how your agent gets your numbers. The steps below change with your choice.</p>
-      <div class="seg" role="group" aria-label="How your agent gets your numbers">
-        <button type="button" data-ar-way="service" aria-pressed="true">Claude Code with a paid data service</button>
-        <button type="button" data-ar-way="files" aria-pressed="false">Otherwise: files you download</button>
+      <div class="seg" role="group" aria-label="Do you have a paid data service?">
+        <button type="button" data-ar-way="service" aria-pressed="true">If you have a paid data service</button>
+        <button type="button" data-ar-way="files" aria-pressed="false">If you don't</button>
       </div>
 
       <div data-ar-way-panel="service">
         <div class="lane-main">
-            <p>Use this way if you use Claude Code and pay for one of the data services below. Claude Code then gets your numbers from the service, so you don't download any files.</p>
+            <p>This works in Claude Code and Codex. Your agent gets your numbers from your data service, so you don't download any files. If you use DeepSeek Harness, choose “If you don't” above.</p>
             <div class="tbl-wrap">
               <table>
-                <thead><tr><th scope="col">Data service</th><th scope="col">What Anthropic says it's for</th></tr></thead>
+                <thead><tr><th scope="col">Data service</th><th scope="col">What it's for</th></tr></thead>
                 <tbody>
                   <tr><td>Supermetrics</td><td>Marketing data from many platforms, for analysis and reports</td></tr>
                   <tr><td>Amplitude</td><td>Product analytics: how people use your app or website</td></tr>
                 </tbody>
               </table>
             </div>
-            <p>Anthropic's marketing plugin comes set up for these two. Anthropic says other services of the same kind also work if you connect them to Claude Code yourself: Google Analytics, Mailchimp or Semrush for marketing data, and Mixpanel or Google Analytics for product data.</p>
+            <p>In Claude Code, other services of the same kind also work if you connect them yourself: Google Analytics, Mailchimp or Semrush for marketing data, and Mixpanel or Google Analytics for product data.</p>
             <div class="need">
-              <strong>What Anthropic says</strong>
-              <ul>
-                <li>Anthropic made the marketing plugin mainly for Cowork, its desktop app, and says it also works in Claude Code. To install it, run these two commands in a terminal:</li>
-              </ul>
-              <div class="req">
-                <div class="req-head"><span>Commands</span><button type="button" class="btn btn-line btn-sm" data-copy="ar-install">Copy</button></div>
-                <pre id="ar-install">claude plugin marketplace add anthropics/knowledge-work-plugins
-claude plugin install marketing@knowledge-work-plugins</pre>
+              <strong>In Claude Code</strong>
+              <p><b>1. Install Anthropic's marketing plugin.</b> A plugin is a package of instructions and connections for Claude Code. In Claude Code, send these two commands, one at a time. (<a href="https://code.claude.com/docs/en/plugins/install" target="_blank" rel="noopener noreferrer">Claude Code's guide</a>)</p>
+              <div class="later">
+                <div class="later-row"><pre id="ar-cc-1">/plugin marketplace add anthropics/knowledge-work-plugins</pre><button type="button" class="btn btn-line btn-sm" data-copy="ar-cc-1">Copy</button></div>
+                <div class="later-row"><pre id="ar-cc-2">/plugin install marketing@knowledge-work-plugins</pre><button type="button" class="btn btn-line btn-sm" data-copy="ar-cc-2">Copy</button></div>
               </div>
+              <p><b>2. Connect your data service.</b> Send <code>/mcp</code>, choose your service and sign in. The sign-in opens in your browser.</p>
+              <p><b>3. Ask for the report.</b> Open Claude Code in the folder where you keep your reports and send <code>/marketing:performance-report</code>, or just ask for a performance report. It looks up your accounts in the service and gets the numbers itself.</p>
+            </div>
+            <div class="need">
+              <strong>In Codex</strong>
+              <p><b>1. Connect your data service</b> in the ChatGPT app, where Codex runs.</p>
               <ul>
-                <li>To connect your data service, open the /mcp menu in Claude Code, choose the service and sign in. The sign-in opens in your browser.</li>
-                <li>Once the plugin is installed, its skills start by themselves when they're relevant, and its commands begin with the plugin's name. The report's command is <code>/marketing:performance-report</code>, which builds a marketing performance report with key numbers, trends and suggestions. You can also just ask Claude Code for a performance report.</li>
-                <li>When a marketing data service is connected, the report's instructions look up which accounts and platforms it has, then get the numbers automatically.</li>
+                <li>Supermetrics: click Plugins in the sidebar, search for Supermetrics and install the Supermetrics Marketing Agent plugin. When it asks, connect it and sign in with the Google or Microsoft account you use for Supermetrics. (<a href="https://docs.supermetrics.com/docs/supermetrics-chatgpt-integration" target="_blank" rel="noopener noreferrer">Supermetrics' guide</a>)</li>
+                <li>Amplitude: open Settings, then MCP servers, and click Add server. Name it amplitude, choose Streamable HTTP and enter <code>https://mcp.amplitude.com/mcp</code> (or <code>https://mcp.eu.amplitude.com/mcp</code> if your Amplitude data is kept in the EU). Save it and click Restart, then click Authenticate and sign in to Amplitude. (<a href="https://learn.chatgpt.com/docs/extend/mcp?surface=app" target="_blank" rel="noopener noreferrer">OpenAI's guide</a>)</li>
               </ul>
-              <div class="need-meta"><span>From Anthropic's pages: <a href="https://github.com/anthropics/knowledge-work-plugins/tree/main/marketing" target="_blank" rel="noopener noreferrer">the marketing plugin</a>, <a href="https://github.com/anthropics/knowledge-work-plugins/blob/main/marketing/CONNECTORS.md" target="_blank" rel="noopener noreferrer">its connections</a>, <a href="https://github.com/anthropics/knowledge-work-plugins" target="_blank" rel="noopener noreferrer">the plugin collection</a> and <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener noreferrer">Claude Code's guide to connections</a></span></div>
+              <p><b>2. Ask for the report.</b> Open Codex in the folder where you keep your reports. Copy the request below into it, after replacing each part in brackets with your own answer.</p>
+              <div class="req">
+                <div class="req-head"><span>Request</span><button type="button" class="btn btn-line btn-sm" data-copy="ar-request-service">Copy request</button></div>
+                <pre id="ar-request-service">Use Anthropic's performance report instructions at https://raw.githubusercontent.com/anthropics/knowledge-work-plugins/0835fae45b2c7e7dd98b732c67a899c2bedc9b20/marketing/skills/performance-report/SKILL.md. If they aren't in this folder yet, download them here first as performance-report.md. Then follow them.
+
+Write my <span class="cb-gap">[weekly / monthly / quarterly]</span> social media report.
+What it covers: <span class="cb-gap">[e.g., my TikTok and Instagram accounts, or one campaign]</span>
+Period: <span class="cb-gap">[e.g., October 2026]</span>
+Compare with: <span class="cb-gap">[e.g., September 2026, or the same month last year, or leave this blank]</span>
+Who reads it: <span class="cb-gap">[e.g., my manager, a client, or just me]</span>
+My numbers: get them from <span class="cb-gap">[Supermetrics / Amplitude]</span>
+Anything else: <span class="cb-gap">[e.g., your targets for this period, or leave this blank]</span></pre>
+              </div>
             </div>
         </div>
       </div>
