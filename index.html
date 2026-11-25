@@ -2253,7 +2253,39 @@ Before you use any defaults, ask me up to 3 questions, one at a time, about anyt
 
     <section class="sec" aria-labelledby="so-wrong">
       <div class="sec-head"><p class="eyebrow">Troubleshooting</p><h2 id="so-wrong">If it goes wrong</h2></div>
-      <div class="ph">[Problems testers report, with what fixed them, added after our tests]</div>
+      <p class="chapters">From our tests with Claude Code, DeepSeek Harness and Codex (November 2026). More are added as testers report them.</p>
+      <div class="folds">
+        <h3 class="fold-group">Working through the stages</h3>
+        <details class="fold" open>
+          <summary><span>Your agent moves on before you've approved</span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+          <div class="fold-body"><span><strong>What it looks like:</strong> You asked for a change or answered a side question, and your agent took it as a yes and went on to the next stage. In our tests, adding a deadline was taken as approving the plan, and once the full script and the shot list came together.</span><span><strong>What to do:</strong> Tell it: "Don't continue to the next step until I tell you so." In our DeepSeek Harness test, the agent then changed only what was asked and waited.</span></div>
+        </details>
+        <details class="fold">
+          <summary><span>The plan is only a few sentences</span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+          <div class="fold-body"><span><strong>What it looks like:</strong> Before the research, your agent shows a short paragraph instead of the plan, which has one line for each item, such as who it's for, the main point and what's left out. In our Codex test, it was one paragraph and a line for each platform.</span><span><strong>What to do:</strong> Ask: "Show me the full plan, one line for each item, with the defaults you used." Then approve it or say what to change.</span></div>
+        </details>
+        <details class="fold">
+          <summary><span>The script tells your audience what you can't prove</span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+          <div class="fold-body"><span><strong>What it looks like:</strong> The script or the text on screen says something like "I don't have numbers that prove it". In our Claude Code test, the tester felt this made the whole video weak.</span><span><strong>What to do:</strong> Ask your agent to move those lines into the notes for you, and to keep in the script only what the facts support.</span></div>
+        </details>
+        <details class="fold">
+          <summary><span>Each step gets slower and costs more</span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+          <div class="fold-body"><span><strong>What it looks like:</strong> Late in a long session, each step takes longer and costs more, and your agent may say the conversation is very long or has been shortened.</span><span><strong>What to do:</strong> Start a new conversation in the same folder and send: "Continue my last unfinished task in the self-media content workflow." The workflow saves your progress in its self-media folder, so the new conversation carries on from there.</span></div>
+        </details>
+        <h3 class="fold-group">Pictures</h3>
+        <details class="fold">
+          <summary><span>The picture styles are only described in words</span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+          <div class="fold-body"><span><strong>What it looks like:</strong> Your agent suggests 2 or 3 picture styles but only describes them, so you can't tell what they would look like.</span><span><strong>What to do:</strong> Ask: "Make a small sample of each style with my own title, so I can choose by looking." If your agent can't make images at all, choose the design brief and take it to another AI image tool or design app.</span></div>
+        </details>
+        <details class="fold">
+          <summary><span>You don't like the pictures your agent makes</span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+          <div class="fold-body"><span><strong>What it looks like:</strong> The pictures look too plain or don't fit your content. In our Claude Code test, the agent drew them with code, and the tester wasn't happy with them.</span><span><strong>What to do:</strong> Choose the design brief instead. Your agent writes down the exact words, size, style and colors for each picture, and you take it to another AI image tool or design app. Bring the pictures back, and your agent checks them against the brief.</span></div>
+        </details>
+        <details class="fold">
+          <summary><span>Your agent says a picture is fixed, but it isn't</span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+          <div class="fold-body"><span><strong>What it looks like:</strong> You point out a problem, such as a title on top of other words. Your agent says it's fixed, but the picture looks the same.</span><span><strong>What to do:</strong> Ask it to look at the new picture before it answers, and to save each new version under a new name, such as -v2. In our DeepSeek Harness test, the same file had been saved over four times, so the tester may have been seeing an old version.</span></div>
+        </details>
+      </div>
       <div class="checks">
         <strong>How experienced users check</strong>
         <ul>
@@ -2509,7 +2541,35 @@ Write my report for <span class="cb-gap">[the new period, e.g., November 2026]</
 
     <section class="sec" aria-labelledby="ar-wrong">
       <div class="sec-head"><p class="eyebrow">Troubleshooting</p><h2 id="ar-wrong">If it goes wrong</h2></div>
-      <div class="ph">[Problems testers report, with what fixed them, added after our tests]</div>
+      <p class="chapters">From our tests with Claude Code, DeepSeek Harness and Codex (November 2026). More are added as testers report them.</p>
+      <div class="folds">
+        <h3 class="fold-group">Getting your numbers</h3>
+        <details class="fold" open>
+          <summary><span>Your agent says the YouTube file covers the wrong dates</span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+          <div class="fold-body"><span><strong>What it looks like:</strong> After you download, your agent says YouTube's file covers other days than your report and asks you to export it again. In our test, the file held the last 365 days because the dates had been left as they were.</span><span><strong>What to do:</strong> In YouTube Studio's Advanced mode, open the date menu at the top, choose Custom, set the first and last day of your report, and export again. The dates have to be exact: YouTube adds up each video's numbers over the whole range, so your agent can't take extra days out afterwards.</span></div>
+        </details>
+        <details class="fold">
+          <summary><span>Your agent finds two YouTube files</span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+          <div class="fold-body"><span><strong>What it looks like:</strong> The list of files your agent shows you has two YouTube files, and the name of one ends in a kind of video, such as "- Long-form".</span><span><strong>What to do:</strong> That file holds only one kind of video, so your agent uses the other one, which covers your whole channel. If you only have a file like that, export again with all your content showing.</span></div>
+        </details>
+        <details class="fold">
+          <summary><span>Your agent can't find your Facebook or Instagram file</span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+          <div class="fold-body"><span><strong>What it looks like:</strong> You clicked Generate in Meta Business Suite, but your agent says the file isn't in your Downloads folder.</span><span><strong>What to do:</strong> Meta doesn't download the files by itself. When the window says your exports are complete, click Download exports. If you closed the window, click the arrow next to Export data to open the list again. In our test, both files arrived as soon as the button was clicked.</span></div>
+        </details>
+        <details class="fold">
+          <summary><span>Your agent says none of your platforms is connected in your data service</span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+          <div class="fold-body"><span><strong>What it looks like:</strong> With a paid data service, your first report stops before it starts. Your agent says the service has no accounts yet and gives you a sign-in link for each platform.</span><span><strong>What to do:</strong> Connecting the service to your agent isn't enough: each platform also has to be signed in inside the service. Open each link and sign in with the account that owns that platform. For Instagram, that's the Facebook account that manages your Instagram account. Then ask for the report again.</span></div>
+        </details>
+        <h3 class="fold-group">The report</h3>
+        <details class="fold">
+          <summary><span>The report is short and leaves parts out</span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+          <div class="fold-body"><span><strong>What it looks like:</strong> The report has only a few headings: for example, no trends over time, nothing on what needs improvement, and no ideas for next time. Anthropic's instructions ask for eight parts, from a short summary to next period's priorities. In our test, Codex merged them into four.</span><span><strong>What to do:</strong> Ask your agent: "Read all of performance-report.md and add each part listed under Report Structure that is missing from the report."</span></div>
+        </details>
+        <details class="fold">
+          <summary><span>The report compares Facebook or Instagram by posts, not by day</span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
+          <div class="fold-body"><span><strong>What it looks like:</strong> The report says its Facebook or Instagram numbers are for the posts published in each period, counted from the day each post went up.</span><span><strong>What to do:</strong> Your file was exported as Lifetime, with one total for each post, so it can't be split into days. To compare day by day, export again and choose Daily under Data view, if Meta offers it. Otherwise the report can stay as it is: it says how it compared them.</span></div>
+        </details>
+      </div>
       <div class="checks">
         <strong>How experienced users check</strong>
         <ul>
