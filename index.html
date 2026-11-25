@@ -271,6 +271,19 @@ tbody td:first-child { font-weight: 700; }
 .wf-tag { align-self: flex-start; margin-top: 6px; padding: 3px 10px; border-radius: 999px; background: var(--accent-tint); color: var(--accent); font-size: 11.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
 .wf-tag.soon { background: var(--ph); color: var(--ink-3); }
 .wf-in > p { text-align: center; }
+/* The two workflows without a page yet (the user's design, 2026-11-24): gray all over, only their top showing, fading
+   out, not links; under them, a bigger, left-aligned, slightly slanted line saying more are coming. Manrope has no
+   italic, so the slant is a set 9 degrees. With one column, only the first of the two shows. */
+.wf-card.wf-soon {
+  pointer-events: none; height: 92px; overflow: hidden; filter: grayscale(1);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 85%);
+          mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 85%);
+}
+.wf-card.wf-soon .wf-icon { background: #EEEEEE; color: #9A9A9A; }
+.wf-card.wf-soon .wf-text strong, .wf-card.wf-soon .wf-desc { color: #9A9A9A; }
+.wf-soon-label { grid-column: 1 / -1; margin: -36px 0 0; position: relative; z-index: 2; text-align: left; font-size: 23px; font-weight: 700; letter-spacing: -0.015em; color: var(--ink-2); }
+.wf-soon-label span { display: inline-block; transform: skewX(-9deg); transform-origin: 0 100%; }
+@media (max-width: 820px) { .wf-card.wf-soon ~ .wf-card.wf-soon { display: none; } }
 
 /* ---------- Setup page ---------- */
 .s-hero-in { max-width: 1040px; margin: 0 auto; padding-block: 84px 72px; display: flex; flex-direction: column; align-items: center; gap: 26px; text-align: center; position: relative; }
@@ -767,14 +780,6 @@ pre, code { font-variant-ligatures: none; }
           <span class="wf-icon" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 38 H40"></path><path d="M6 38 V6"></path><path d="M11 31 L19 22 L25 27 L37 13"></path><path d="M30 13 H37 V20"></path></svg></span>
           <span class="wf-text"><strong>Turning trend sources into a topic list</strong><span class="wf-desc">Get an hourly list of what is rising in your topics on Google Trends, TikTok, Wikipedia, YouTube, X and Instagram.</span></span>
         </a>
-        <a class="wf-card" href="#track-competitors">
-          <span class="wf-icon" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="17" cy="14" r="6"></circle><path d="M6 36 C6 28 11 23 17 23 C20 23 22.5 24 24.5 26"></path><circle cx="31" cy="29" r="6"></circle><path d="M35.5 33.5 L40 38"></path></svg></span>
-          <span class="wf-text"><strong>Tracking competitor accounts (text only)</strong><span class="wf-desc">Gather the text of competitors' recent posts and summarize what they are doing.</span></span>
-        </a>
-        <a class="wf-card" href="#organize-content">
-          <span class="wf-icon" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 A3 3 0 0 1 7 9 H16 L20 13 H37 A3 3 0 0 1 40 16 V34 A3 3 0 0 1 37 37 H7 A3 3 0 0 1 4 34 Z"></path><path d="M4 19 H40"></path></svg></span>
-          <span class="wf-text"><strong>Organizing past content and assets</strong><span class="wf-desc">Rename, tag and sort your past posts and files so they are easy to find.</span></span>
-        </a>
         <a class="wf-card" href="#analytics-report">
           <span class="wf-icon" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4 H27 L35 12 V40 H10 Z"></path><path d="M27 4 V12 H35"></path><path d="M16 34 V27"></path><path d="M22 34 V22"></path><path d="M28 34 V30"></path></svg></span>
           <span class="wf-text"><strong>Drafting a recurring report from analytics</strong><span class="wf-desc">Give your agent your numbers and get a first draft of your regular report, with what changed and what to try next.</span></span>
@@ -783,6 +788,15 @@ pre, code { font-variant-ligatures: none; }
           <span class="wf-icon" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11 H22"></path><path d="M6 18 H18"></path><path d="M6 25 H14"></path><path d="M33 8 L38 13 L22 29 L15 31 L17 24 Z"></path><path d="M6 36 H34"></path></svg></span>
           <span class="wf-text"><strong>Researching and outlining a script</strong><span class="wf-desc">Start from an idea and get a script with checked facts and a choice of openings.</span></span>
         </a>
+        <div class="wf-card wf-soon" aria-hidden="true">
+          <span class="wf-icon" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="17" cy="14" r="6"></circle><path d="M6 36 C6 28 11 23 17 23 C20 23 22.5 24 24.5 26"></path><circle cx="31" cy="29" r="6"></circle><path d="M35.5 33.5 L40 38"></path></svg></span>
+          <span class="wf-text"><strong>Tracking competitor accounts (text only)</strong><span class="wf-desc">Gather the text of competitors' recent posts and summarize what they are doing.</span></span>
+        </div>
+        <div class="wf-card wf-soon" aria-hidden="true">
+          <span class="wf-icon" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 A3 3 0 0 1 7 9 H16 L20 13 H37 A3 3 0 0 1 40 16 V34 A3 3 0 0 1 37 37 H7 A3 3 0 0 1 4 34 Z"></path><path d="M4 19 H40"></path></svg></span>
+          <span class="wf-text"><strong>Organizing past content and assets</strong><span class="wf-desc">Rename, tag and sort your past posts and files so they are easy to find.</span></span>
+        </div>
+        <p class="wf-soon-label"><span>More workflows coming soon…</span></p>
       </div>
       <p><a class="link-strong" href="#setup">New to AI agents? Set one up first →</a></p>
     </div>
