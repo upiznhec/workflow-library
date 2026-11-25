@@ -11,7 +11,7 @@ These instructions are for you, the AI agent. The person reads only what you tel
 
 ## 1. Work out the dates
 
-Read "Period" and "Compare with" in the request. The files must cover both periods, so the dates to download run from the first day of the earlier period to the last day of "Period". If "Compare with" is blank, compare with the period of the same length just before "Period". Tell the person the dates in plain words, for example "September 1 to October 31, 2026".
+Read "Period" and "Compare with" in the request. If "Compare with" names a period, the files must cover both periods, so the dates to download run from the first day of the earlier period to the last day of "Period". If "Compare with" is blank or says none, do not compare: download only the dates of "Period". Tell the person the dates in plain words, for example "September 1 to October 31, 2026".
 
 ## 2. Ask which platforms, and whether they are signed in
 
@@ -72,7 +72,7 @@ When they say they are done:
 
 1. If performance-report.md is not in this folder yet, download Anthropic's instructions from https://raw.githubusercontent.com/anthropics/knowledge-work-plugins/0835fae45b2c7e7dd98b732c67a899c2bedc9b20/marketing/skills/performance-report/SKILL.md and save them here, unchanged, as performance-report.md.
 2. Follow them, using the files in the numbers folder as the data.
-3. Some files have one row per day; others have one row per post. Compare the two periods with the daily rows, and leave out days outside the two periods, such as the extra days in a TikTok download. Meta's files have a row for each day when Daily was chosen. If a Meta file says "Lifetime" in its Date column instead, each figure is the total since the post went up: for that platform, compare the posts published in each period, and say in the report that this is how they were compared.
+3. Some files have one row per day; others have one row per post. Compare the two periods with the daily rows (if there is no comparison, report "Period" on its own), and leave out days outside the periods, such as the extra days in a TikTok download. Meta's files have a row for each day when Daily was chosen. If a Meta file says "Lifetime" in its Date column instead, each figure is the total since the post went up: for that platform, compare the posts published in each period, and say in the report that this is how they were compared.
 4. In the report, say which platforms it covers. Name any platform you left out, and why (for example, X without X Premium).
 
 ## Next time
