@@ -78,6 +78,22 @@ h1[tabindex="-1"]:focus { outline: none; }
 .proto-pages a { padding: 8px 14px; border-radius: 999px; color: #D9D2DA; font-size: 13.5px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: background 0.2s, color 0.2s; }
 .proto-pages a:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.08); }
 .proto-pages a[aria-current="page"] { background: #FFFFFF; color: var(--ink); }
+
+/* Cookie choice for Google Analytics (site page only, made by build.py section 12; the user, 2026-11-25): a white card
+   just above the dock, and "Cookie settings" in every footer, which opens it again. */
+.consent {
+  position: fixed; left: 50%; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); z-index: 26; transform: translateX(-50%);
+  width: min(560px, calc(100vw - 32px)); padding: 16px 18px; border-radius: var(--r); background: var(--surface);
+  box-shadow: var(--shadow-lift); display: flex; flex-direction: column; gap: 12px;
+  font-size: 14px; line-height: 1.55; color: var(--ink-2);
+}
+.consent[hidden] { display: none; }
+.consent p { margin: 0; }
+.consent a { color: var(--ink); }
+.consent-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.consent-btns .btn { min-width: 112px; }
+.site-foot .consent-open { padding: 0; border: 0; background: none; color: #FFFFFF; font: inherit; text-decoration: underline; cursor: pointer; }
+.site-foot .consent-open:hover { color: var(--blush); }
 .switch { display: inline-flex; align-items: center; gap: 8px; margin-left: 4px; padding: 6px 12px 6px 8px; border: 0; border-radius: 999px; background: none; color: #F4F0F3; font-size: 13px; font-weight: 600; white-space: nowrap; cursor: pointer; }
 .switch:hover { background: rgba(255, 255, 255, 0.08); }
 .switch-track { position: relative; width: 32px; height: 19px; border-radius: 999px; background: #4A444F; transition: background 0.2s; }
@@ -3104,6 +3120,93 @@ Write my report for <span class="cb-gap">[the new period, e.g., November 2026]</
   window.addEventListener('hashchange', function () { pauseAll(null); });
   var s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api'; s.async = true;
   document.head.appendChild(s);
+})();
+</script>
+
+<script>
+(function () {
+  if (location.hostname !== 'upiznhec.github.io') return;
+  var KEY = 'wl-analytics', site = 'Social Media AI Workflow Library', named = { setup: 'Get set up' };
+  function pageTitle() {
+    var v = document.querySelector('.view:not([hidden])'), name = v && v.getAttribute('data-view');
+    if (!v || name === 'home') return site;
+    var h = v.querySelector('h1');
+    return (named[name] || (h ? h.textContent.replace(/\s+/g, ' ').trim() : '')) + ' · ' + site;
+  }
+  function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function store(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  var tz = '';
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+  var europe = /^(Europe\/|Arctic\/|Atlantic\/(Azores|Canary|Faroe|Madeira|Reykjavik)|Asia\/(Famagusta|Nicosia))/.test(tz);
+
+  document.title = pageTitle();
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { dataLayer.push(arguments); };
+  gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'granted' });
+  gtag('consent', 'default', { analytics_storage: 'denied', region: ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'] });
+  var loaded = false;
+  function load() {
+    if (loaded) return;
+    loaded = true;
+    if (stored() === 'yes') gtag('consent', 'update', { analytics_storage: 'granted' });
+    gtag('js', new Date());
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=G-FKP8K6RNZ1';
+    document.head.appendChild(s);
+  }
+  function clearCookies() {
+    document.cookie.split(';').forEach(function (c) {
+      var n = c.split('=')[0].trim();
+      if (!/^_ga/.test(n)) return;
+      [location.hostname, '.' + location.hostname, ''].forEach(function (d) {
+        document.cookie = n + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : '');
+      });
+    });
+  }
+
+  var box = null, off = false;
+  function choose(v) {
+    store(v);
+    box.hidden = true;
+    off = v !== 'yes';
+    if (!off) { gtag('consent', 'update', { analytics_storage: 'granted' }); load(); }
+    else { gtag('consent', 'update', { analytics_storage: 'denied' }); clearCookies(); }
+  }
+  function ask() {
+    if (!box) {
+      box = document.createElement('div');
+      box.className = 'consent';
+      box.setAttribute('role', 'region');
+      box.setAttribute('aria-label', 'Cookie choice');
+      box.innerHTML = '<p>May this site use Google Analytics cookies to count visits and see which pages are read? '
+        + '<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses this data</a></p>'
+        + '<div class="consent-btns"><button type="button" class="btn btn-dark btn-sm" data-c="yes">Allow</button>'
+        + '<button type="button" class="btn btn-line btn-sm" data-c="no">No thanks</button></div>';
+      box.addEventListener('click', function (e) {
+        var b = e.target.closest && e.target.closest('[data-c]');
+        if (b) choose(b.getAttribute('data-c'));
+      });
+      document.body.appendChild(box);
+    }
+    box.hidden = false;
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.site-foot-row'), function (row) {
+    var last = row.lastElementChild;
+    if (!last) return;
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'consent-open'; b.textContent = 'Cookie settings';
+    b.addEventListener('click', ask);
+    last.appendChild(document.createTextNode(' · '));
+    last.appendChild(b);
+  });
+
+  var c = stored();
+  if (c === 'yes' || (c !== 'no' && !europe)) load();
+  if (europe && !c) ask();
+  window.addEventListener('hashchange', function () {
+    document.title = pageTitle();
+    if (loaded && !off) gtag('event', 'page_view', { page_location: location.href, page_title: document.title });
+  });
 })();
 </script>
 
