@@ -2307,7 +2307,7 @@ Before you use any defaults, ask me up to 3 questions, one at a time, about anyt
       </div>
       <div class="credit">
         <strong>Source and terms of use</strong>
-        <span>This workflow uses <a href="https://github.com/anthropics/knowledge-work-plugins/blob/0835fae45b2c7e7dd98b732c67a899c2bedc9b20/marketing/skills/performance-report/SKILL.md" target="_blank" rel="noopener noreferrer">performance-report</a>, a free skill (a file of written instructions for AI agents) from the marketing plugin in Anthropic's <a href="https://github.com/anthropics/knowledge-work-plugins" target="_blank" rel="noopener noreferrer">knowledge-work-plugins</a>, published under the Apache License 2.0. If you use Claude Code with a paid data service, you install Anthropic's marketing plugin, which includes it. Otherwise, your agent downloads the version of March 18, 2026, as it is, straight from Anthropic's GitHub page. This library is not affiliated with or endorsed by Anthropic.</span>
+        <span>This workflow uses <a href="https://github.com/anthropics/knowledge-work-plugins/blob/0835fae45b2c7e7dd98b732c67a899c2bedc9b20/marketing/skills/performance-report/SKILL.md" target="_blank" rel="noopener noreferrer">performance-report</a>, a free skill (a file of written instructions for AI agents) from the marketing plugin in Anthropic's <a href="https://github.com/anthropics/knowledge-work-plugins" target="_blank" rel="noopener noreferrer">knowledge-work-plugins</a>, published under the Apache License 2.0. If you use Claude Code with a paid data service, you install Anthropic's marketing plugin, which includes it. Otherwise, your agent downloads the version of March 18, 2026, as it is, straight from Anthropic's GitHub page. Without a data service, it first reads our own short instructions for getting your numbers, <a href="https://github.com/upiznhec/workflow-library/blob/main/instructions/get-numbers.md" target="_blank" rel="noopener noreferrer">get-numbers.md</a>. This library is not affiliated with or endorsed by Anthropic.</span>
       </div>
     </div>
 
@@ -2319,16 +2319,16 @@ Before you use any defaults, ask me up to 3 questions, one at a time, about anyt
           <p class="lead">There are two ways to give it your numbers. You choose one at the top of the Steps.</p>
           <ul class="sf-list">
             <li><strong>If you have a paid data service</strong> such as Supermetrics, and use Claude Code or Codex: connect the service to your agent once. Your agent then gets your numbers from the service itself.</li>
-            <li><strong>If you don't</strong>, or you use DeepSeek Harness: download your numbers from each platform's analytics page, and your agent works from those files. This works with any agent, and nothing is installed.</li>
+            <li><strong>If you don't</strong>, or you use DeepSeek Harness: your agent tells you what to download from each platform's analytics page, then collects the files and works from them. This works with any agent, and nothing is installed.</li>
           </ul>
           <div class="need">
             <strong>Before you start</strong>
             <ul>
               <li>An AI agent that can go online and work with files on your computer. If you don't have one yet, see <a href="#setup">Get set up</a>.</li>
               <li>If you have a paid data service: Claude Code or Codex, and an account with one of the data services listed in the Steps.</li>
-              <li>If you don't: your numbers, downloaded from each platform. The Steps show where to find them on TikTok, Instagram, Facebook, YouTube and X.</li>
+              <li>If you don't: you're signed in to each platform in the browser you usually use. For Instagram, a business or creator account (you can switch in Instagram's settings; a private account becomes public). For Facebook, a Page. X shows these numbers only to X Premium subscribers, so without Premium the report leaves X out.</li>
             </ul>
-            <p>The instructions are free. With a data service, you also pay what it charges. Your agent costs what it normally costs.</p>
+            <p>The instructions are free. With a data service, you also pay what it charges; Supermetrics starts with a 14-day free trial. Your agent costs what it normally costs.</p>
             <div class="need-meta"><span>[Cost of one report in our test, added after testing]</span></div>
           </div>
           <div class="out-row">
@@ -2350,7 +2350,7 @@ Before you use any defaults, ask me up to 3 questions, one at a time, about anyt
         <svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><circle cx="32" cy="32" r="29"></circle><path d="M26 21 L44 32 L26 43 Z"></path></svg>
         <span>[A video of the whole process, recorded during testing]</span>
       </button>
-      <p class="chapters">Chapters: [Downloading the numbers] · [Sending the request] · [Checking the report] · [Saving the template]</p>
+      <p class="chapters">Chapters: [Sending the request] · [Downloading the numbers] · [Checking the report] · [Saving the template]</p>
     </section>
 
     <section class="sec" aria-labelledby="ar-steps">
@@ -2376,12 +2376,8 @@ Before you use any defaults, ask me up to 3 questions, one at a time, about anyt
             <p>In Claude Code, other services of the same kind also work if you connect them yourself: Google Analytics, Mailchimp or Semrush for marketing data, and Mixpanel or Google Analytics for product data.</p>
             <div class="need">
               <strong>In Claude Code</strong>
-              <p><b>1. Install Anthropic's marketing plugin.</b> A plugin is a package of instructions and connections for Claude Code. In Claude Code, send these two commands, one at a time. (<a href="https://code.claude.com/docs/en/plugins/install" target="_blank" rel="noopener noreferrer">Claude Code's guide</a>)</p>
-              <div class="later">
-                <div class="later-row"><pre id="ar-cc-1">/plugin marketplace add anthropics/knowledge-work-plugins</pre><button type="button" class="btn btn-line btn-sm" data-copy="ar-cc-1">Copy</button></div>
-                <div class="later-row"><pre id="ar-cc-2">/plugin install marketing@knowledge-work-plugins</pre><button type="button" class="btn btn-line btn-sm" data-copy="ar-cc-2">Copy</button></div>
-              </div>
-              <p><b>2. Connect your data service.</b> Send <code>/mcp</code>, choose your service and sign in. The sign-in opens in your browser.</p>
+              <p><b>1. Add Anthropic's marketing plugin.</b> A plugin is a package of instructions and connections for Claude Code. In the Claude app, click Plugins in the sidebar and search for Marketing. Choose the one from anthropics/knowledge-work-plugins and click Add. Supermetrics' own connector and plugin show up in the results too; they are not this plugin. (<a href="https://claude.com/docs/plugins/overview" target="_blank" rel="noopener noreferrer">Claude's guide</a>)</p>
+              <p><b>2. Connect your data service.</b> Open the Marketing plugin and choose its Connectors tab. Next to your service, click Add if it says Not added, then click Connect and sign in. The first time you ask for a report, your agent may tell you that none of your platforms is connected in the service yet, and give you a sign-in link for each one, such as YouTube, TikTok or Instagram. Open each link and sign in with the account that owns it.</p>
               <p><b>3. Ask for the report.</b> Open Claude Code in the folder where you keep your reports and send <code>/marketing:performance-report</code>, or just ask for a performance report. It looks up your accounts in the service and gets the numbers itself.</p>
             </div>
             <div class="need">
@@ -2412,48 +2408,41 @@ Anything else: <span class="cb-gap">[e.g., your targets for this period, or leav
         <ol class="steps">
 
           <li class="step">
-            <div class="step-head"><span class="num" aria-hidden="true">1</span><h3>Download your numbers</h3></div>
+            <div class="step-head"><span class="num" aria-hidden="true">1</span><h3>Send the request to your agent</h3></div>
             <div class="step-body lane">
               <div class="lane-main">
-                <p>On a computer, download the numbers for the period you're reporting on from each platform you use. If you want the report to say what changed, also download the period before it, or choose one longer period that covers both. Put all the files in one folder, and use that folder every time.</p>
-                <ul class="sf-list">
-                  <li><strong>TikTok:</strong> open TikTok Studio in your web browser and click Analytics on the left. Choose the dates, then download the data. You can download up to 365 days at a time. (<a href="https://www.tiktok.com/creator-academy/en/article/tool-analytics-intro" target="_blank" rel="noopener noreferrer">TikTok's guide</a>)</li>
-                  <li><strong>Facebook and Instagram:</strong> open Meta Business Suite and choose your Facebook Page or Instagram account in the menu at the top left. Click Insights in the left menu, open the numbers you need, then click Export and choose a file type. Instagram accounts need to be professional accounts to have these numbers. (<a href="https://www.facebook.com/help/972879969525875" target="_blank" rel="noopener noreferrer">Meta's guide</a>)</li>
-                  <li><strong>YouTube:</strong> open YouTube Studio and click Insights in the left menu (it used to be called Analytics). Open a report, click Advanced mode, and choose the dates. Then click Export current view at the top and choose a file type. Each download holds up to 500 rows. (<a href="https://support.google.com/youtube/answer/9717005?hl=en" target="_blank" rel="noopener noreferrer">YouTube's guide</a>)</li>
-                  <li><strong>X:</strong> go to analytics.x.com and open the Posts tab, or, if you have an X ads account, choose Analytics, then Post activity, on ads.x.com. Choose the dates and click Export. Each download covers up to 30 days and up to 3,000 posts. X says these pages are free. (<a href="https://business.x.com/en/help/campaign-measurement-and-analytics/tweet-activity-dashboard" target="_blank" rel="noopener noreferrer">X's guide</a>)</li>
-                  <li><strong>Any other platform, or no download button:</strong> copy the main numbers from its analytics page into your request.</li>
-                </ul>
-              </div>
-              <aside class="lane-side">
-                <div class="ph">[Pictures of where to download on each platform, added after testing]</div>
-              </aside>
-            </div>
-          </li>
-
-          <li class="step">
-            <div class="step-head"><span class="num" aria-hidden="true">2</span><h3>Send the request to your agent</h3></div>
-            <div class="step-body lane">
-              <div class="lane-main">
-                <p>Open your agent in the folder with your files. Copy the request below into it, after replacing each part in brackets with your own answer.</p>
+                <p>Open your agent in the folder where you keep your reports. Copy the request below into it, after replacing each part in brackets with your own answer.</p>
                 <div class="req">
                   <div class="req-head"><span>Request</span><button type="button" class="btn btn-line btn-sm" data-copy="ar-request">Copy request</button></div>
-                  <pre id="ar-request">Use Anthropic's performance report instructions at https://raw.githubusercontent.com/anthropics/knowledge-work-plugins/0835fae45b2c7e7dd98b732c67a899c2bedc9b20/marketing/skills/performance-report/SKILL.md. If they aren't in this folder yet, download them here first as performance-report.md. Then follow them.
+                  <pre id="ar-request">Use the report instructions at https://raw.githubusercontent.com/upiznhec/workflow-library/main/instructions/get-numbers.md. If they aren't in this folder yet, download them here first as get-numbers.md. Then follow them.
 
 Write my <span class="cb-gap">[weekly / monthly / quarterly]</span> social media report.
 What it covers: <span class="cb-gap">[e.g., my TikTok and Instagram accounts, or one campaign]</span>
 Period: <span class="cb-gap">[e.g., October 2026]</span>
 Compare with: <span class="cb-gap">[e.g., September 2026, or the same month last year, or leave this blank]</span>
 Who reads it: <span class="cb-gap">[e.g., my manager, a client, or just me]</span>
-My numbers: <span class="cb-gap">[the files are in this folder / I've attached them / I've typed them below]</span>
 Anything else: <span class="cb-gap">[e.g., your targets for this period, or leave this blank]</span></pre>
                 </div>
               </div>
               <aside class="lane-side">
                 <div class="card callout">
                   <strong class="callout-title"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M2 6V14H14V6Z" opacity="0.3"/><path d="M5 3V6H11V3H5Z"/></svg>What's in the request</strong>
-                  <span>The first line tells your agent where the instructions are, and to download them into this folder the first time. Nothing is installed on your computer.</span>
-                  <span>The other lines tell it what the report is for. These are the things the instructions ask about, so it can start writing without guessing.</span>
+                  <span>The first line tells your agent where our instructions are, and to download them into this folder the first time. They tell it how to help you get your numbers, and then to download Anthropic's report instructions and follow them. Nothing is installed on your computer.</span>
+                  <span>The other lines tell it what the report is for. These are the things Anthropic's instructions ask about, so it can start writing without guessing.</span>
                 </div>
+              </aside>
+            </div>
+          </li>
+
+          <li class="step">
+            <div class="step-head"><span class="num" aria-hidden="true">2</span><h3>Download your numbers</h3></div>
+            <div class="step-body lane">
+              <div class="lane-main">
+                <p>Your agent works out the dates from your request. Then, in one message, it gives you a link to the analytics page of each platform in your report, with what to click and what to download. You do the clicking in your own browser; your agent doesn't open these sites.</p>
+                <p>Download everything, then tell your agent you're done. Your browser saves the files to your Downloads folder. Your agent finds them there and shows you the list. After you say yes, it copies them into a folder here and unzips them. Nothing in Downloads is moved or deleted.</p>
+              </div>
+              <aside class="lane-side">
+                <div class="ph">[Pictures of where to download on each platform, added after testing]</div>
               </aside>
             </div>
           </li>
@@ -2477,12 +2466,11 @@ Anything else: <span class="cb-gap">[e.g., your targets for this period, or leav
             <div class="step-head"><span class="num" aria-hidden="true">4</span><h3>Save it for next time</h3></div>
             <div class="step-body">
               <p>When the report is done, your agent offers to set up a template you can reuse next period. Say yes, and ask it to keep the template in this folder.</p>
-              <p>Next time, download the new numbers into the same folder and send this request:</p>
+              <p>Next time, send this request in the same folder. Your agent tells you what to download for the new dates.</p>
               <div class="req">
                 <div class="req-head"><span>Next time</span><button type="button" class="btn btn-line btn-sm" data-copy="ar-next">Copy request</button></div>
-                <pre id="ar-next">Use the performance report instructions and the report template in this folder.
-Write my report for <span class="cb-gap">[the new period, e.g., November 2026]</span>, compared with <span class="cb-gap">[e.g., October 2026]</span>.
-The new numbers are <span class="cb-gap">[in this folder / attached / typed below]</span>.</pre>
+                <pre id="ar-next">Follow get-numbers.md and use the report template, both in this folder.
+Write my report for <span class="cb-gap">[the new period, e.g., November 2026]</span>, compared with <span class="cb-gap">[e.g., October 2026]</span>.</pre>
               </div>
               <details class="fold">
                 <summary>More requests to send your agent<svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7 L9 12 L14 7"></path></svg></summary>
@@ -2490,7 +2478,7 @@ The new numbers are <span class="cb-gap">[in this folder / attached / typed belo
                   <div class="later-item"><b>Make slides</b><div class="later-row"><pre id="ar-later-1">Make a slide-ready summary of this report.</pre><button type="button" class="btn btn-line btn-sm" data-copy="ar-later-1">Copy</button></div></div>
                   <div class="later-item"><b>Write an email</b><div class="later-row"><pre id="ar-later-2">Write an email to [who will read it] with the main points of this report.</pre><button type="button" class="btn btn-line btn-sm" data-copy="ar-later-2">Copy</button></div></div>
                   <div class="later-item"><b>Look more closely</b><div class="later-row"><pre id="ar-later-3">Look more closely at [a number or a platform] in this report and tell me what's behind it.</pre><button type="button" class="btn btn-line btn-sm" data-copy="ar-later-3">Copy</button></div></div>
-                  <div class="later-item"><b>Remove the workflow</b><div class="later-row"><pre id="ar-later-4">Remove the performance report instructions from this folder. Keep my reports, templates and numbers. Show me what you would delete and wait for my OK.</pre><button type="button" class="btn btn-line btn-sm" data-copy="ar-later-4">Copy</button></div></div>
+                  <div class="later-item"><b>Remove the workflow</b><div class="later-row"><pre id="ar-later-4">Remove get-numbers.md and the performance report instructions from this folder. Keep my reports, templates and numbers. Show me what you would delete and wait for my OK.</pre><button type="button" class="btn btn-line btn-sm" data-copy="ar-later-4">Copy</button></div></div>
                 </div>
               </details>
             </div>
