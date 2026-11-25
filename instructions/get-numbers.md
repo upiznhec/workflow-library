@@ -72,7 +72,7 @@ When they say they are done:
 ## 5. Write the report
 
 1. If performance-report.md is not in this folder yet, download Anthropic's instructions from https://raw.githubusercontent.com/anthropics/knowledge-work-plugins/0835fae45b2c7e7dd98b732c67a899c2bedc9b20/marketing/skills/performance-report/SKILL.md and save them here, unchanged, as performance-report.md.
-2. Follow them, using the files in the numbers folder as the data.
+2. Read all of performance-report.md before you start. If your tool shortens long output, read the file in parts. Then follow it, using the files in the numbers folder as the data, and write all eight numbered sections listed under "Report Structure", in that order, each under its own heading.
 3. Some files have one row per day; others have one row per post. Compare the two periods with the daily rows (if there is no comparison, report "Period" on its own), and leave out days outside the periods, such as the extra days in a TikTok download. Meta's files have a row for each day when Daily was chosen. If a Meta file says "Lifetime" in its Date column instead, each figure is the total since the post went up: for that platform, compare the posts published in each period, and say in the report that this is how they were compared.
 4. In the report, say which platforms it covers. Name any platform you left out, and why (for example, X without X Premium).
 
