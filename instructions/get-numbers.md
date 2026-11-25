@@ -24,16 +24,18 @@ In one message, list every platform they chose, in the order below, each with it
 ### TikTok
 
 1. Open https://www.tiktok.com/tiktokstudio/analytics
-2. Choose the dates. TikTok allows up to 365 days in one download. If the dates are longer, download them in two parts.
-3. Download each of the four: Overview, Content, Viewers and Followers. Each one is saved as a .zip file.
+2. Download each of the four: Overview, Content, Viewers and Followers. Each one is saved as a .zip file.
+   - Overview: choose the dates. TikTok allows up to 365 days in one download. If the dates are longer, download them in two parts.
+   - Content, Viewers and Followers offer only Last 7, 28, 60 or 365 days. Tell the person which one to choose: the shortest one that reaches back to the first date. You leave out the extra days when you write the report.
 
 ### Facebook and Instagram (Meta Business Suite)
 
-1. Open https://business.facebook.com/latest/insights/content_summary. If the list of posts is not showing, click Content under "Content" in the left menu.
+1. Open https://business.facebook.com/latest/insights/content
 2. Click Export data at the top right.
-3. In the window, click the Facebook tab. Choose the account and the dates, and keep Post selected. Click Generate. The file downloads by itself.
+3. In the window, click the Facebook tab, then choose the account and the dates. Under Data view, choose Daily if it is offered. Under Metric presets, tick every option. Keep Post selected, then click Generate.
 4. Click Export data again and do the same on the Instagram tab.
 5. Only if they report on stories: do it once more with Stories selected.
+6. When the window says the exports are complete, click Download exports. If the window has closed, click the arrow next to Export data to see it again. Download exports saves every export in that list, so a file the report doesn't need may come too.
 
 If their Instagram account is not in the account menu, it needs to be a business or creator account. They can switch in Instagram's settings; a private account becomes public. Facebook numbers come from a Facebook Page.
 
@@ -56,13 +58,13 @@ If its analytics page has a download or export button, walk them through it in t
 
 When they say they are done:
 
-1. Look in their Downloads folder only for files saved today that match these names:
+1. Unless the person changed it, their browser saves downloads to the Downloads folder in their home folder: \Users\<name>\Downloads on Windows, /Users/<name>/Downloads on a Mac. If the files are not there, ask them where their browser saves downloads. Look in that folder only for files saved today that match these names:
    - TikTok: Overview_….zip, Content_….zip, Viewers_….zip and Followers_….zip
    - Facebook and Instagram: a .csv named with its dates, such as Oct-27-2026_Nov-23-2026_….csv (one for each platform)
    - YouTube: Content <start date>_<end date> <channel name>.zip
 
-   Do not open or list any other file there. If your app asks for permission to read the Downloads folder, tell the person it is only to copy these files.
-2. Show them the list of files you found, and wait for their OK.
+   Facebook and Instagram files have the same kind of name. Read only the first line of each such .csv to tell them apart: a Facebook file has the columns "Page ID" and "Page name"; an Instagram file has "Account ID" and "Account username". Do not open or list any other file there. If your app asks for permission to read the Downloads folder, tell the person it is only to copy these files.
+2. Show them the list of files you found, with the platform of each, and wait for their OK. Leave out any file for a platform the report doesn't cover.
 3. Make a folder here named after the period, such as "numbers October 2026". Copy the files into it. Do not move or delete anything in Downloads. Unzip each .zip file into a folder with the same name.
 4. Check that each file covers the dates. If a file is missing or covers other dates, tell them which download to do again. Some follower files are empty when an account has few followers. Mention it and go on.
 
@@ -70,7 +72,7 @@ When they say they are done:
 
 1. If performance-report.md is not in this folder yet, download Anthropic's instructions from https://raw.githubusercontent.com/anthropics/knowledge-work-plugins/0835fae45b2c7e7dd98b732c67a899c2bedc9b20/marketing/skills/performance-report/SKILL.md and save them here, unchanged, as performance-report.md.
 2. Follow them, using the files in the numbers folder as the data.
-3. Some files have one row per day; others have one row per post. Meta's post files say "Lifetime" in the Date column: each figure is the total since the post went up. Compare the two periods with the daily files. For Facebook and Instagram, which have no daily file here, compare the posts published in each period, and say in the report that this is how they were compared.
+3. Some files have one row per day; others have one row per post. Compare the two periods with the daily rows, and leave out days outside the two periods, such as the extra days in a TikTok download. Meta's files have a row for each day when Daily was chosen. If a Meta file says "Lifetime" in its Date column instead, each figure is the total since the post went up: for that platform, compare the posts published in each period, and say in the report that this is how they were compared.
 4. In the report, say which platforms it covers. Name any platform you left out, and why (for example, X without X Premium).
 
 ## Next time
