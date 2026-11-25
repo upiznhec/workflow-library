@@ -43,8 +43,9 @@ If their Instagram account is not in the account menu, it needs to be a business
 
 1. Open https://studio.youtube.com
 2. Click Insights in the left menu. It used to be called Analytics.
-3. Click Advanced mode, then choose the dates.
-4. Click Export current view at the top, then choose Comma-separated values (.csv). It is saved as a .zip file.
+3. Click Advanced mode.
+4. Open the date menu, choose Custom and set the dates. Set them exactly: YouTube adds up each video's numbers over the whole range, so extra days cannot be taken out later.
+5. Click Export current view at the top, then choose Comma-separated values (.csv). It is saved as a .zip file.
 
 ### X
 
@@ -61,7 +62,7 @@ When they say they are done:
 1. Unless the person changed it, their browser saves downloads to the Downloads folder in their home folder: \Users\<name>\Downloads on Windows, /Users/<name>/Downloads on a Mac. If the files are not there, ask them where their browser saves downloads. Look in that folder only for files saved today that match these names:
    - TikTok: Overview_….zip, Content_….zip, Viewers_….zip and Followers_….zip
    - Facebook and Instagram: a .csv named with its dates, such as Oct-27-2026_Nov-23-2026_….csv (one for each platform)
-   - YouTube: Content <start date>_<end date> <channel name>.zip
+   - YouTube: Content <start date>_<end date> <channel name>.zip. A YouTube file whose name ends in a kind of video, such as "- Long-form", holds only that part of the channel: use the one without it. If there is none, ask them to export again with all their content showing.
 
    Facebook and Instagram files have the same kind of name. Read only the first line of each such .csv to tell them apart: a Facebook file has the columns "Page ID" and "Page name"; an Instagram file has "Account ID" and "Account username". Do not open or list any other file there. If your app asks for permission to read the Downloads folder, tell the person it is only to copy these files.
 2. Show them the list of files you found, with the platform of each, and wait for their OK. Leave out any file for a platform the report doesn't cover.
