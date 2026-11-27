@@ -3142,13 +3142,19 @@ Write my report for <span class="cb-gap">[the new period, e.g., November 2026]</
   document.title = pageTitle();
   window.dataLayer = window.dataLayer || [];
   window.gtag = function () { dataLayer.push(arguments); };
-  gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'granted' });
-  gtag('consent', 'default', { analytics_storage: 'denied', region: ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'] });
+  var ads = europe ? 'denied' : 'granted';
+  function consent(v) {
+    var c = { analytics_storage: v };
+    if (!europe || v === 'denied') { c.ad_storage = v; c.ad_user_data = v; }
+    return c;
+  }
+  gtag('consent', 'default', { ad_storage: ads, ad_user_data: ads, ad_personalization: 'denied', analytics_storage: 'granted' });
+  gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', analytics_storage: 'denied', region: ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH'] });
   var loaded = false;
   function load() {
     if (loaded) return;
     loaded = true;
-    if (stored() === 'yes') gtag('consent', 'update', { analytics_storage: 'granted' });
+    if (stored() === 'yes') gtag('consent', 'update', consent('granted'));
     gtag('js', new Date());
     var s = document.createElement('script'); s.async = true;
     s.src = 'https://www.googletagmanager.com/gtm.js?id=G-FKP8K6RNZ1';
@@ -3157,7 +3163,7 @@ Write my report for <span class="cb-gap">[the new period, e.g., November 2026]</
   function clearCookies() {
     document.cookie.split(';').forEach(function (c) {
       var n = c.split('=')[0].trim();
-      if (!/^_ga/.test(n)) return;
+      if (!/^(_ga|_gcl)/.test(n)) return;
       [location.hostname, '.' + location.hostname, ''].forEach(function (d) {
         document.cookie = n + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : '');
       });
@@ -3169,8 +3175,8 @@ Write my report for <span class="cb-gap">[the new period, e.g., November 2026]</
     store(v);
     box.hidden = true;
     off = v !== 'yes';
-    if (!off) { gtag('consent', 'update', { analytics_storage: 'granted' }); load(); }
-    else { gtag('consent', 'update', { analytics_storage: 'denied' }); clearCookies(); }
+    if (!off) { gtag('consent', 'update', consent('granted')); load(); }
+    else { gtag('consent', 'update', consent('denied')); clearCookies(); }
   }
   function ask() {
     if (!box) {
@@ -3178,7 +3184,9 @@ Write my report for <span class="cb-gap">[the new period, e.g., November 2026]</
       box.className = 'consent';
       box.setAttribute('role', 'region');
       box.setAttribute('aria-label', 'Cookie choice');
-      box.innerHTML = '<p>May this site use Google Analytics cookies to count visits and see which pages are read? '
+      box.innerHTML = '<p>' + (europe
+          ? 'May this site use Google Analytics cookies to count visits and see which pages are read? '
+          : 'May this site use Google cookies to count visits, see which pages are read and tell which visits come from its Google ads? ')
         + '<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses this data</a></p>'
         + '<div class="consent-btns"><button type="button" class="btn btn-dark btn-sm" data-c="yes">Allow</button>'
         + '<button type="button" class="btn btn-line btn-sm" data-c="no">No thanks</button></div>';
@@ -3207,6 +3215,17 @@ Write my report for <span class="cb-gap">[the new period, e.g., November 2026]</
     document.title = pageTitle();
     if (loaded && !off) gtag('event', 'page_view', { page_location: location.href, page_title: document.title });
   });
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('[data-copy]');
+    if (!btn || !loaded || off) return;
+    var item = btn.closest('.later-item'), head = btn.closest('.req-head');
+    var name = item ? item.querySelector('b') : head ? head.querySelector('span') : null;
+    gtag('event', 'copy_request', {
+      copy_id: btn.getAttribute('data-copy'),
+      copy_label: (name ? name.textContent : btn.textContent).replace(/\s+/g, ' ').trim().slice(0, 100),
+      page_location: location.href, page_title: document.title
+    });
+  }, true);
 })();
 </script>
 
